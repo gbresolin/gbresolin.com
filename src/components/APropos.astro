@@ -6,41 +6,34 @@ import { site } from '../data/site';
 
 <Section id="a-propos" eyebrow="01 — À propos" titre="Qui je suis" filet={false}>
   <Portrait slot="aside" />
+  {/* Texte volontairement direct : phrases courtes, une idée par paragraphe,
+      aucune formule à décoder. Une version antérieure finissait chaque
+      paragraphe sur un aphorisme, ce qui masquait le concret. */}
   <div class="prose-editorial">
     <p>
-      Douze ans à mon compte, puis sept ans sur le même produit. Les deux
-      moitiés de ce parcours enseignent des choses opposées, et j'ai eu besoin
-      des deux : <strong
-        >le freelance apprend à livrer ; l'édition apprend à vivre avec ce
-        qu'on a livré.</strong
-      >
+      J'ai commencé en {site.debutCarriere}, à mon compte, à {site.localisation}.
+      Pendant douze ans, j'ai développé des sites et des applications pour mes
+      propres clients : des comparateurs de prix, des plateformes grand public.
+      Seul, du devis jusqu'à la mise en ligne.
+      {/* TODO(contenu) : une phrase concrète sur ce que ces projets imposaient
+          techniquement — trafic, disponibilité, paiement en ligne. C'est ce qui
+          en ferait une référence technique plutôt qu'une ligne de parcours. */}
     </p>
     <p>
-      De {site.debutCarriere} à 2019, j'ai travaillé seul depuis {
-        site.localisation
-      }, pour mes propres clients : des comparateurs de prix, des plateformes
-      grand public.{' '}
-      {/* TODO(contenu) : une phrase concrète sur ce que ces projets ont
-          imposé techniquement — volumétrie, disponibilité, paiement en ligne,
-          modération. C'est ce qui transforme « sites de rencontre » en
-          référence technique plutôt qu'en anecdote. */}
-      On apprend vite quand on est seul à répondre du résultat : le devis,
-      l'architecture, la mise en ligne, et le téléphone qui sonne quand ça
-      casse.
+      En 2019, j'ai rejoint l'équipe qui développe <strong>Isi-APP</strong> et
+      je n'en suis plus parti. C'est un logiciel qui aide les entreprises à
+      piloter leur système d'information : gestion des tickets, des projets et
+      du parc informatique.
     </p>
     <p>
-      Je me suis ensuite orienté vers les applications métier — celles qui ont
-      de vrais utilisateurs, de vraies contraintes, et des données qu'on n'a
-      pas le droit de perdre. Depuis 2019, je travaille sur
-      {' '}<strong>Isi-APP</strong>, une plateforme de pilotage de système
-      d'information dont je suis aujourd'hui lead developer : j'encadre
-      l'équipe et je porte les décisions techniques, sans avoir quitté le code
-      pour le tableur.
+      J'en suis aujourd'hui lead developer. Je conçois l'architecture,
+      j'encadre l'équipe, je relis le code — et j'en écris toujours.
     </p>
     <p>
-      Cette seconde moitié m'a appris ce qu'aucune mission courte n'enseigne :
-      on vit avec ses décisions d'architecture. Celles qui visaient à aller
-      vite, je les ai repayées ; celles qui étaient justes portent encore.
+      Ce que j'aime dans ce travail, c'est de rester longtemps sur le même
+      produit. On finit par savoir ce que valent ses choix techniques : les
+      bons tiennent encore des années plus tard, les mauvais, c'est soi-même
+      qui les corrige.
     </p>
   </div>
 </Section>
