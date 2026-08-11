@@ -145,6 +145,44 @@ const meta = [
     margin-top: 0;
   }
 
+  /* Deux colonnes à partir du grand écran : les titres passent dans la marge
+     de gauche, comme sur la page d'accueil, et servent de repère dans un texte
+     long. Le contenu vient du Markdown, on ne peut donc pas l'envelopper — le
+     flottant déplace les titres sans toucher au flux du reste. */
+  @media (min-width: 1024px) {
+    .etude-de-cas {
+      margin-left: 18rem;
+    }
+
+    .etude-de-cas :global(h2) {
+      float: left;
+      clear: left;
+      width: 14rem;
+      margin-left: -18rem;
+      /* Compense l'absence de filet : il resterait suspendu dans la marge. */
+      padding-top: 0;
+      border-top: 0;
+      /* Aligne la ligne de base du titre sur celle du premier paragraphe. */
+      margin-top: 3.75rem;
+    }
+
+    .etude-de-cas :global(h2:first-child) {
+      margin-top: 0.25rem;
+    }
+
+    /* Le filet qui séparait les sections passe au-dessus du contenu, seul
+       élément resté dans la colonne de droite. */
+    .etude-de-cas :global(h2 + *) {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-rule);
+    }
+
+    .etude-de-cas :global(h2:first-child + *) {
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
+
   .etude-de-cas :global(h3) {
     margin-top: 2.5rem;
     font-size: 1.125rem;

@@ -9,7 +9,9 @@ import { z } from 'astro/zod';
  */
 const projets = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projets' }),
-  schema: z.object({
+  // `image()` valide le chemin et confie l'optimisation à Astro, plutôt que
+  // de traiter la capture comme une simple chaîne de caractères.
+  schema: ({ image }) => z.object({
     titre: z.string(),
     /** Une phrase, affichée dans la liste de la page d'accueil. */
     resume: z.string(),
@@ -22,6 +24,8 @@ const projets = defineCollection({
     ordre: z.number(),
     vedette: z.boolean().default(false),
     lien: z.string().url().optional(),
+    /** Capture affichée dans la liste de la page d'accueil. */
+    apercu: image().optional(),
     /** Un brouillon reste dans le dépôt mais n'est pas publié. */
     brouillon: z.boolean().default(false),
   }),
