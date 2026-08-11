@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Entete from '../components/Entete.astro';
+import Hero from '../components/Hero.astro';
+import APropos from '../components/APropos.astro';
+import Methode from '../components/Methode.astro';
+import Stack from '../components/Stack.astro';
+import ProjetsListe from '../components/ProjetsListe.astro';
+import Contact from '../components/Contact.astro';
+import PiedDePage from '../components/PiedDePage.astro';
+import { site } from '../data/site';
+---
+
+<Base titre={`${site.nom} — ${site.role}`}>
+  <Entete />
+  <main>
+    <Hero />
+    <APropos />
+    <Methode />
+    <Stack />
+    <ProjetsListe />
+    <Contact />
+  </main>
+  <PiedDePage />
+</Base>

@@ -1,0 +1,44 @@
+---
+import Section from './Section.astro';
+import { site } from '../data/site';
+
+const liens = [
+  { libelle: 'Email', valeur: site.email, href: `mailto:${site.email}` },
+  { libelle: 'GitHub', valeur: '@gbresolin', href: site.liens.github },
+  { libelle: 'LinkedIn', valeur: 'Grégory Bresolin', href: site.liens.linkedin },
+];
+---
+
+<Section id="contact" eyebrow="05 — Contact" titre="Prendre contact">
+  <p class="prose-editorial">
+    {/* TODO(contenu) : à ajuster — pas de posture commerciale, mais préciser
+        ce qui vaut la peine de vous écrire. */}
+    Une question technique, une idée à creuser, ou simplement envie d'échanger
+    sur Laravel et sur le développement assisté par IA : écrivez-moi.
+  </p>
+
+  <ul class="mt-12">
+    {
+      liens.map((lien) => (
+        <li class="border-t border-rule last:border-b">
+          <a
+            href={lien.href}
+            class="group flex items-baseline justify-between gap-6 py-5"
+            rel={lien.href.startsWith('http') ? 'me noopener' : undefined}
+          >
+            <span class="eyebrow">{lien.libelle}</span>
+            <span class="flex items-center gap-3 text-lead transition-colors group-hover:text-accent">
+              {lien.valeur}
+              <span
+                class="text-base transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
+              >
+                →
+              </span>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

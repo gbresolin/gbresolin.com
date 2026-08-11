@@ -1,0 +1,51 @@
+---
+import { site, sections } from '../data/site';
+
+interface Props {
+  /** Sur les pages projet, la nav renvoie vers les ancres de l'accueil. */
+  racine?: boolean;
+}
+
+const { racine = true } = Astro.props;
+const prefixe = racine ? '' : '/';
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-rule/60 bg-surface/85 backdrop-blur-sm"
+>
+  <div
+    class="mx-auto flex max-w-(--container-page) items-center justify-between gap-6 px-6 py-4 md:px-10"
+  >
+    <a
+      href="/"
+      class="font-display text-lg leading-none tracking-tight transition-colors hover:text-accent"
+    >
+      {site.nom}
+    </a>
+
+    <nav aria-label="Navigation principale">
+      <ul class="flex items-center gap-5 text-sm md:gap-7">
+        {
+          sections.map((s) => (
+            <li class="hidden sm:block">
+              <a
+                href={`${prefixe}#${s.id}`}
+                class="text-ink-soft transition-colors hover:text-ink"
+              >
+                {s.libelle}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a
+            href={`mailto:${site.email}`}
+            class="rounded-full border border-ink px-4 py-1.5 text-sm transition-colors hover:bg-ink hover:text-surface"
+          >
+            Me contacter
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

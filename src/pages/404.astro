@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Entete from '../components/Entete.astro';
+import PiedDePage from '../components/PiedDePage.astro';
+import { site } from '../data/site';
+---
+
+<Base titre={`Page introuvable — ${site.nom}`} noindex>
+  <Entete racine={false} />
+
+  <main
+    id="contenu"
+    class="mx-auto flex min-h-[60vh] max-w-(--container-page) flex-col justify-center px-6 py-24 md:px-10"
+  >
+    <p class="eyebrow">Erreur 404</p>
+    <h1 class="mt-4 text-title text-balance">Cette page n'existe pas</h1>
+    <p class="mt-5 max-w-(--container-reading) text-lead text-ink-soft">
+      Le lien est peut-être ancien : le site a été refait et certaines adresses
+      ont changé.
+    </p>
+    <p class="mt-8">
+      <a href="/" class="link">Retour à l'accueil</a>
+    </p>
+  </main>
+
+  <PiedDePage />
+</Base>

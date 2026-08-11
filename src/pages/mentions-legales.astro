@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import Entete from '../components/Entete.astro';
+import PiedDePage from '../components/PiedDePage.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  titre={`Mentions légales — ${site.nom}`}
+  description="Mentions légales du site gbresolin.com"
+>
+  <Entete racine={false} />
+
+  <main
+    id="contenu"
+    class="mx-auto max-w-(--container-page) px-6 pb-(--spacing-section) pt-16 md:px-10 md:pt-24"
+  >
+    <p class="eyebrow">Informations légales</p>
+    <h1 class="mt-4 text-title">Mentions légales</h1>
+
+    <div class="legal mt-16 max-w-(--container-reading)">
+      <h2>Éditeur du site</h2>
+      <p>
+        {/* TODO(contenu) : confirmer le statut. L'ancien site déclarait
+            « AE Gregory Bresolin » avec l'adresse personnelle. Si
+            l'auto-entreprise n'est plus active, il faut retirer la mention et
+            le numéro SIREN. Pour un site vitrine non marchand, publier
+            l'adresse personnelle n'est pas obligatoire — l'email suffit. */}
+        {site.nom}<br />
+        Contact : <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+      <p>
+        Directeur de la publication : {site.nom}.
+      </p>
+
+      <h2>Hébergement</h2>
+      <p>
+        Le site est hébergé par&nbsp;:<br />
+        <strong>o2switch SAS</strong><br />
+        222-224 boulevard Gustave Flaubert<br />
+        63000 Clermont-Ferrand, France<br />
+        Téléphone : 04 44 44 60 40<br />
+        <a href="https://www.o2switch.fr" rel="noopener">www.o2switch.fr</a>
+      </p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        Les textes et le contenu éditorial de ce site sont la propriété de
+        {' '}{site.nom}. Toute reproduction ou représentation, totale ou
+        partielle, sans autorisation préalable, est interdite au titre du code
+        de la propriété intellectuelle.
+      </p>
+      <p>
+        Le code source du site est en revanche public et consultable sur
+        {' '}<a href={site.liens.github} rel="noopener">GitHub</a>.
+      </p>
+
+      <h2>Données personnelles</h2>
+      <p>
+        Ce site est un site vitrine <strong>statique</strong> : il ne comporte
+        ni formulaire, ni compte utilisateur, ni base de données. Aucune donnée
+        personnelle n'est collectée, stockée ni transmise à un tiers lors de
+        votre visite.
+      </p>
+      <p>
+        Si vous m'écrivez par email, votre message et votre adresse sont
+        utilisés uniquement pour vous répondre, et ne sont ni cédés ni
+        exploités à d'autres fins. Conformément au RGPD, vous disposez d'un
+        droit d'accès, de rectification et de suppression des données vous
+        concernant, exerçable à l'adresse
+        {' '}<a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+
+      <h2>Cookies et mesure d'audience</h2>
+      <p>
+        Ce site ne dépose <strong>aucun cookie</strong> et n'utilise aucun
+        outil de mesure d'audience. Les polices de caractères sont servies
+        depuis ce même domaine : aucune requête n'est adressée à un service
+        tiers pendant votre navigation.
+      </p>
+
+      <h2>Droit applicable</h2>
+      <p>
+        Le présent site est soumis au droit français. En cas de litige, et à
+        défaut de résolution amiable, compétence est attribuée aux tribunaux
+        français.
+      </p>
+    </div>
+  </main>
+
+  <PiedDePage />
+</Base>
+
+<style>
+  .legal :global(h2) {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-rule);
+    font-size: var(--text-heading);
+    line-height: var(--text-heading--line-height);
+  }
+
+  .legal :global(h2:first-child) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .legal :global(p) {
+    margin-top: 1.25rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  .legal :global(strong) {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  .legal :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>

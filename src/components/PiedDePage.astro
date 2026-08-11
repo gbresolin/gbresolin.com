@@ -1,0 +1,41 @@
+---
+import { site } from '../data/site';
+
+const annee = new Date().getFullYear();
+---
+
+<footer class="border-t border-rule">
+  <div
+    class="mx-auto flex max-w-(--container-page) flex-col gap-4 px-6 py-10 text-sm text-ink-faint sm:flex-row sm:items-center sm:justify-between md:px-10"
+  >
+    <p>© {annee} {site.nom}</p>
+
+    <nav aria-label="Liens de pied de page">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2">
+        <li>
+          <a href="/mentions-legales" class="transition-colors hover:text-ink">
+            Mentions légales
+          </a>
+        </li>
+        <li>
+          <a
+            href={site.liens.github}
+            rel="me noopener"
+            class="transition-colors hover:text-ink"
+          >
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a
+            href={site.liens.linkedin}
+            rel="me noopener"
+            class="transition-colors hover:text-ink"
+          >
+            LinkedIn
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</footer>

@@ -1,0 +1,210 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Entete from '../../components/Entete.astro';
+import PiedDePage from '../../components/PiedDePage.astro';
+import { getProjetsPublies, type Projet } from '../../data/projets';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const projets = await getProjetsPublies();
+
+  return projets.map((projet, i) => ({
+    params: { slug: projet.id },
+    props: {
+      projet,
+      precedent: projets[i - 1] ?? null,
+      suivant: projets[i + 1] ?? null,
+    },
+  }));
+}
+
+interface Props {
+  projet: Projet;
+  precedent: Projet | null;
+  suivant: Projet | null;
+}
+
+const { projet, precedent, suivant } = Astro.props;
+const { Content } = await render(projet);
+
+const meta = [
+  { intitule: 'Année', valeur: projet.data.annee },
+  { intitule: 'Cadre', valeur: projet.data.role },
+  { intitule: 'Statut', valeur: projet.data.statut },
+];
+---
+
+<Base
+  titre={`${projet.data.titre} — ${site.nom}`}
+  description={projet.data.resume}
+>
+  <Entete racine={false} />
+
+  <main id="contenu">
+    <article
+      class="mx-auto max-w-(--container-page) px-6 pb-(--spacing-section) pt-16 md:px-10 md:pt-24"
+    >
+      <a
+        href="/#projets"
+        class="eyebrow inline-flex items-center gap-2 transition-colors hover:text-ink"
+      >
+        <span aria-hidden="true">←</span> Tous les projets
+      </a>
+
+      <header class="mt-8">
+        <h1 class="text-title text-balance">{projet.data.titre}</h1>
+        <p
+          class="mt-5 max-w-(--container-reading) text-lead text-ink-soft text-pretty"
+        >
+          {projet.data.resume}
+        </p>
+      </header>
+
+      <dl
+        class="mt-12 grid gap-6 border-y border-rule py-6 sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {
+          meta.map((m) => (
+            <div>
+              <dt class="eyebrow">{m.intitule}</dt>
+              <dd class="mt-1.5">{m.valeur}</dd>
+            </div>
+          ))
+        }
+        <div>
+          <dt class="eyebrow">Stack</dt>
+          <dd class="mt-1.5">{projet.data.stack.join(', ')}</dd>
+        </div>
+      </dl>
+
+      {
+        projet.data.lien && (
+          <p class="mt-8">
+            <a href={projet.data.lien} rel="noopener" class="link">
+              Voir le projet en ligne →
+            </a>
+          </p>
+        )
+      }
+
+      <div class="etude-de-cas mt-16">
+        <Content />
+      </div>
+    </article>
+
+    {
+      (precedent || suivant) && (
+        <nav
+          aria-label="Autres projets"
+          class="mx-auto grid max-w-(--container-page) gap-px border-t border-rule px-6 py-12 sm:grid-cols-2 md:px-10"
+        >
+          {precedent ? (
+            <a href={`/projets/${precedent.id}`} class="group">
+              <span class="eyebrow">Projet précédent</span>
+              <span class="mt-2 block font-display text-heading transition-colors group-hover:text-accent">
+                {precedent.data.titre}
+              </span>
+            </a>
+          ) : (
+            <span />
+          )}
+
+          {suivant && (
+            <a href={`/projets/${suivant.id}`} class="group sm:text-right">
+              <span class="eyebrow">Projet suivant</span>
+              <span class="mt-2 block font-display text-heading transition-colors group-hover:text-accent">
+                {suivant.data.titre}
+              </span>
+            </a>
+          )}
+        </nav>
+      )
+    }
+  </main>
+
+  <PiedDePage />
+</Base>
+
+<style>
+  /* Mise en forme du Markdown des études de cas. Volontairement local à cette
+     page : le reste du site n'a pas de contenu long. */
+  .etude-de-cas {
+    max-width: var(--container-reading);
+  }
+
+  .etude-de-cas :global(h2) {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-rule);
+    font-size: var(--text-heading);
+    line-height: var(--text-heading--line-height);
+  }
+
+  .etude-de-cas :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .etude-de-cas :global(h3) {
+    margin-top: 2.5rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+
+  .etude-de-cas :global(p),
+  .etude-de-cas :global(ul),
+  .etude-de-cas :global(ol) {
+    margin-top: 1.25rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  .etude-de-cas :global(ul) {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+
+  .etude-de-cas :global(ol) {
+    list-style: decimal;
+    padding-left: 1.25rem;
+  }
+
+  .etude-de-cas :global(li + li) {
+    margin-top: 0.5rem;
+  }
+
+  .etude-de-cas :global(strong) {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  .etude-de-cas :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .etude-de-cas :global(blockquote) {
+    margin-top: 2rem;
+    border-left: 2px solid var(--color-accent);
+    background-color: var(--color-accent-soft);
+    padding: 1rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+
+  .etude-de-cas :global(blockquote p) {
+    margin-top: 0.5rem;
+  }
+
+  .etude-de-cas :global(blockquote p:first-child) {
+    margin-top: 0;
+  }
+
+  .etude-de-cas :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background-color: var(--color-raised);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+  }
+</style>

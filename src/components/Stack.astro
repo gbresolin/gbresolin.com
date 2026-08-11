@@ -1,0 +1,37 @@
+---
+import Section from './Section.astro';
+
+/* TODO(contenu) : ajuster à ce que Grégory utilise réellement au quotidien
+   aujourd'hui — la liste vient de l'ancien site. */
+const groupes = [
+  {
+    intitule: 'Backend',
+    items: ['PHP 8', 'Laravel', 'API REST', 'MySQL / MariaDB', 'Tests'],
+  },
+  {
+    intitule: 'Frontend',
+    items: ['Livewire', 'Alpine.js', 'Tailwind CSS', 'Blade', 'Astro'],
+  },
+  {
+    intitule: 'Outillage',
+    items: ['Claude Code', 'Git / GitHub', 'CI/CD', 'Déploiement automatisé'],
+  },
+];
+---
+
+<Section id="stack" eyebrow="03 — Stack" titre="Ce que j'utilise">
+  <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      groupes.map((groupe) => (
+        <div class="border-t border-rule pt-5">
+          <h3 class="eyebrow">{groupe.intitule}</h3>
+          <ul class="mt-4 space-y-2">
+            {groupe.items.map((item) => (
+              <li class="text-ink-soft">{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</Section>

@@ -1,0 +1,119 @@
+# =============================================================================
+# gbresolin.com — site statique Astro sur o2switch (Apache)
+# Ce fichier est copié tel quel dans dist/ au build, puis déployé.
+# =============================================================================
+
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ---------------------------------------------------------------------------
+  # Canonicalisation : HTTPS et www.
+  # L'ancien site répondait sur www, on ne change pas d'URL canonique.
+  # ---------------------------------------------------------------------------
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://www.gbresolin.com%{REQUEST_URI} [R=301,L]
+
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # ---------------------------------------------------------------------------
+  # Anciennes URLs WordPress.
+  # Le blog est supprimé : ses 3 articles et la page d'index sont redirigés
+  # vers l'accueil plutôt que renvoyer des 404 aux liens existants.
+  # ---------------------------------------------------------------------------
+  RewriteRule ^blog/?$ / [R=301,L]
+  RewriteRule ^mon-site-wordpress-est-bloque-en-mode-maintenance-35/?$ / [R=301,L]
+  RewriteRule ^perte-des-variables-de-session-apres-redirection-58/?$ / [R=301,L]
+  RewriteRule ^laravel-9-sortie-imminente-80/?$ / [R=301,L]
+
+  # Les pages de l'ancien thème qui n'ont plus d'équivalent direct.
+  RewriteRule ^(services|realisations|a-propos)/?$ / [R=301,L]
+
+  # ---------------------------------------------------------------------------
+  # Reliquats WordPress.
+  # Il n'y a plus de PHP ici : on répond 410 Gone plutôt que 404, pour que les
+  # moteurs désindexent, et pour que les scanners cessent de sonder ces routes.
+  # ---------------------------------------------------------------------------
+  RewriteRule ^(wp-admin|wp-login\.php|wp-json|xmlrpc\.php|wp-includes) - [G,L]
+  RewriteRule ^wp-content/ - [G,L]
+
+  # ---------------------------------------------------------------------------
+  # URLs sans extension → fichier .html correspondant.
+  # Astro génère /mentions-legales/index.html : Apache le sert déjà via
+  # DirectoryIndex. Cette règle couvre le cas d'une éventuelle sortie à plat.
+  # ---------------------------------------------------------------------------
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+?)/?$ /$1.html [L]
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# Page d'erreur
+# -----------------------------------------------------------------------------
+ErrorDocument 404 /404.html
+
+# -----------------------------------------------------------------------------
+# Compression
+# -----------------------------------------------------------------------------
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# Cache
+# Les assets générés par Astro portent un hash dans leur nom : ils peuvent être
+# mis en cache indéfiniment. Le HTML, lui, doit être revalidé à chaque visite,
+# sinon un déploiement met des heures à devenir visible.
+# -----------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 1 hour"
+  ExpiresByType text/plain "access plus 1 day"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Assets fingerprintés : immuables.
+  <FilesMatch "\.(woff2|css|js|svg|png|jpg|jpeg|webp|avif)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML : toujours revalider.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  # ---------------------------------------------------------------------------
+  # En-têtes de sécurité.
+  # Le site est entièrement statique et ne charge aucune ressource tierce :
+  # la CSP peut donc rester stricte sans rien casser.
+  # ---------------------------------------------------------------------------
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+
+  # HSTS — à n'activer qu'une fois le HTTPS confirmé stable sur le domaine et
+  # ses sous-domaines. Décommenter après la bascule, pas avant : un HSTS posé
+  # trop tôt est difficile à retirer côté navigateurs.
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# Types MIME
+# -----------------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/svg+xml .svg
+  AddType application/manifest+json .webmanifest
+</IfModule>

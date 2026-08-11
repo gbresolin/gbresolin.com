@@ -1,0 +1,192 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Palette
+   Les valeurs vivent dans :root en CSS natif plutôt que directement dans
+   @theme, parce que @theme ne peut pas être placé dans une media query.
+   @theme se contente de les exposer à Tailwind, la bascule clair/sombre se
+   fait donc en un seul endroit, plus bas.
+--------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+
+  --c-surface: #faf9f7; /* fond de page, crème très légèrement chaud */
+  --c-raised: #f2f0ea; /* blocs en léger retrait du fond */
+  --c-ink: #16150f; /* texte principal */
+  --c-ink-soft: #5d594f; /* texte secondaire, légendes */
+  --c-ink-faint: #8d887c; /* métadonnées, numérotation */
+  --c-rule: #e2ded4; /* filets, séparateurs */
+  --c-accent: #9c3d17; /* terracotta profond */
+  --c-accent-soft: #f0e6df; /* fond d'accent très dilué */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --c-surface: #12110f;
+    --c-raised: #1c1a17;
+    --c-ink: #f5f2ec;
+    --c-ink-soft: #a8a294;
+    --c-ink-faint: #767061;
+    --c-rule: #2c2925;
+    --c-accent: #e79063;
+    --c-accent-soft: #2a1d14;
+  }
+}
+
+@theme {
+  /* Couleurs — utilisables en bg-surface, text-ink, border-rule, etc. */
+  --color-surface: var(--c-surface);
+  --color-raised: var(--c-raised);
+  --color-ink: var(--c-ink);
+  --color-ink-soft: var(--c-ink-soft);
+  --color-ink-faint: var(--c-ink-faint);
+  --color-rule: var(--c-rule);
+  --color-accent: var(--c-accent);
+  --color-accent-soft: var(--c-accent-soft);
+
+  /* Familles — --ff-display et --ff-body sont injectées par astro:assets,
+     fallbacks déjà inclus (voir la clé `fallbacks` dans astro.config.mjs). */
+  --font-display: var(--ff-display);
+  --font-body: var(--ff-body);
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace;
+
+  /* Échelle typographique fluide.
+     Le display descend jusqu'à 2.75rem pour rester lisible à 320px. */
+  --text-display: clamp(2.75rem, 11vw, 8.5rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.03em;
+
+  --text-title: clamp(2rem, 5.5vw, 3.75rem);
+  --text-title--line-height: 1.05;
+  --text-title--letter-spacing: -0.02em;
+
+  --text-heading: clamp(1.375rem, 2.5vw, 1.875rem);
+  --text-heading--line-height: 1.2;
+  --text-heading--letter-spacing: -0.01em;
+
+  --text-lead: clamp(1.125rem, 1.8vw, 1.4rem);
+  --text-lead--line-height: 1.55;
+
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.12em;
+
+  /* Rythme vertical des sections. Volontairement généreux, mais pas au point
+     de laisser un trou quand une section est courte. */
+  --spacing-section: clamp(4rem, 9vw, 8rem);
+
+  /* Mesure de lecture — au-delà, l'œil perd la ligne suivante */
+  --container-reading: 34rem;
+  --container-page: 72rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compense la hauteur du header collant sur les ancres */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Instrument Serif n'a qu'une graisse : on ne demande jamais de faux gras,
+     qui la déformerait. */
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-surface);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Respecte le réglage système : plus aucune animation ni défilement animé */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Composants récurrents
+--------------------------------------------------------------------------- */
+
+@layer components {
+  /* Petit intitulé en capitales espacées qui coiffe chaque section */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+
+  /* Lien de texte : le soulignement s'épaissit et se rapproche au survol */
+  .link {
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--color-rule);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    transition:
+      text-decoration-color 0.2s ease,
+      text-decoration-thickness 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .link:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+  }
+
+  /* Corps de texte long : mesure contrainte et espacement confortable */
+  .prose-editorial {
+    max-width: var(--container-reading);
+    font-size: var(--text-lead);
+    line-height: 1.65;
+    color: var(--color-ink-soft);
+  }
+
+  .prose-editorial > * + * {
+    margin-top: 1.25em;
+  }
+
+  .prose-editorial strong {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+}

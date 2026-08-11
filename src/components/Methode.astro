@@ -1,0 +1,64 @@
+---
+import Section from './Section.astro';
+
+/* TODO(contenu) : à valider et réécrire avec Grégory — c'est la section qui
+   porte le différenciateur, elle doit sonner juste. */
+const etapes = [
+  {
+    titre: 'Comprendre avant de coder',
+    texte:
+      "Le métier d'abord : à quoi sert l'application, qui s'en sert, ce qui casse aujourd'hui. Cette étape ne se délègue pas — c'est elle qui détermine si le reste a un sens.",
+  },
+  {
+    titre: "Décider de l'architecture",
+    texte:
+      "Modèle de données, découpage, choix techniques et leurs conséquences. Je tranche, et j'assume les arbitrages : ce sont eux qu'on retrouve dans le code trois ans plus tard.",
+  },
+  {
+    titre: 'Implémenter avec Claude Code',
+    texte:
+      "L'écriture du code, les tests, les migrations, la mise en production. Je pilote, je relis tout, je corrige. Le gain n'est pas de taper moins vite, c'est de passer plus de temps sur les décisions et moins sur la plomberie.",
+  },
+  {
+    titre: 'Relire, tester, déployer',
+    texte:
+      "Rien ne part en production sans être relu et testé. Le déploiement est automatisé : un push, un build, une mise en ligne — reproductible et sans manipulation manuelle.",
+  },
+];
+---
+
+<Section id="methode" eyebrow="02 — Méthode" titre="Comment je travaille">
+  <p class="prose-editorial">
+    L'IA a changé ma façon de coder, pas mon métier. Elle a supprimé la partie
+    mécanique du travail et rendu la partie conception plus déterminante que
+    jamais. Concrètement, voilà comment un projet se déroule.
+  </p>
+
+  <ol class="mt-14 space-y-0">
+    {
+      etapes.map((etape, i) => (
+        <li class="grid gap-x-6 gap-y-2 border-t border-rule py-7 sm:grid-cols-[3rem_1fr]">
+          <span class="eyebrow pt-1 tabular-nums">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <div>
+            <h3 class="text-lg font-medium">{etape.titre}</h3>
+            <p class="mt-2 max-w-(--container-reading) text-ink-soft text-pretty">
+              {etape.texte}
+            </p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <p
+    class="mt-10 border-l-2 border-accent bg-accent-soft px-5 py-4 text-sm text-ink-soft text-pretty"
+  >
+    Ce site en est un exemple : conçu, écrit, versionné et déployé avec Claude
+    Code. Le code est <a
+      href="https://github.com/gbresolin/gbresolin.com"
+      class="link">public sur GitHub</a
+    >.
+  </p>
+</Section>

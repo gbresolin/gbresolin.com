@@ -1,0 +1,29 @@
+---
+import Section from './Section.astro';
+import { site } from '../data/site';
+---
+
+<Section id="a-propos" eyebrow="01 — À propos" titre="Qui je suis" filet={false}>
+  {/* TODO(contenu) : réécrire entièrement avec la voix de Grégory. Ce texte
+      est dérivé de l'ancien site et sert de point de départ, pas de version
+      finale. */}
+  <div class="prose-editorial">
+    <p>
+      Je suis développeur fullstack à {site.localisation}. J'ai commencé en
+      2013, je suis passé par l'école IPI Lyon comme concepteur développeur
+      d'applications, et j'ai passé l'essentiel de ces années sur des
+      applications métier — celles qui ont de vrais utilisateurs, de vraies
+      contraintes et des données qu'on n'a pas le droit de perdre.
+    </p>
+    <p>
+      Aujourd'hui je suis <strong>{site.poste}</strong>, où je travaille sur
+      Isi-APP. À côté, je continue à construire mes propres projets, souvent
+      pour tester une idée ou une nouvelle façon de travailler.
+    </p>
+    <p>
+      Ce qui m'intéresse n'a pas changé : comprendre le métier avant d'écrire
+      du code, choisir l'architecture qui tiendra dans trois ans plutôt que
+      celle qui va vite aujourd'hui, et livrer des choses qui marchent.
+    </p>
+  </div>
+</Section>
