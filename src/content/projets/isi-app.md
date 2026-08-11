@@ -1,7 +1,7 @@
 ---
 titre: Isi-APP
 resume: SaaS multi-modules pour piloter un système d'information — parc informatique, ticketing, projets — avec un espace prestataire multi-clients.
-lien: https://app.isi-app.com/
+lien: https://isi-app.com
 annee: '2019 — aujourd’hui'
 role: Lead developer, ISI-APP
 statut: en cours
