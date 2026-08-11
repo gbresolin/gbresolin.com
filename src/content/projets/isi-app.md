@@ -14,11 +14,8 @@ stack:
 ordre: 1
 vedette: true
 brouillon: false
-# TODO(contenu) : faire valider par ISI-APP ce qui est publiable sur la
-# plateforme — chiffres du Résultat, description de l'architecture, captures
-# éventuelles. Placé en commentaire YAML : il bloque la mise en production
-# sans apparaître dans la page ni dans son code source. À supprimer une fois
-# l'accord obtenu.
+# Contenu publiable validé par l'associé de Grégory le 11 août 2026 :
+# chiffres du Résultat et description de l'architecture.
 ---
 
 ## Contexte
