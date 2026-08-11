@@ -3,12 +3,18 @@ import Section from './Section.astro';
 import { getProjetsPublies } from '../data/projets';
 
 const projets = await getProjetsPublies();
+
+// Le texte et la numérotation s'ajustent au nombre de projets publiés :
+// annoncer « quelques projets » ou numéroter « 01 » devant une entrée unique
+// sonnerait faux.
+const plusieurs = projets.length > 1;
 ---
 
 <Section id="projets" eyebrow="04 — Projets" titre="Ce que j'ai construit">
   <p class="prose-editorial">
-    Quelques projets détaillés plutôt qu'un mur de vignettes : le contexte, les
-    contraintes, les décisions techniques et ce qu'elles ont coûté.
+    {plusieurs ? 'Quelques projets détaillés' : 'Un projet détaillé'} plutôt
+    qu'un mur de vignettes : le contexte, les contraintes, les décisions
+    techniques et ce qu'elles ont coûté.
   </p>
 
   <ul class="mt-14">
@@ -20,7 +26,7 @@ const projets = await getProjetsPublies();
             class="group grid gap-x-6 gap-y-3 py-8 sm:grid-cols-[3rem_1fr_auto] sm:items-baseline"
           >
             <span class="eyebrow tabular-nums">
-              {String(i + 1).padStart(2, '0')}
+              {plusieurs ? String(i + 1).padStart(2, '0') : ''}
             </span>
 
             <div>

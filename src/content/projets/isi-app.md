@@ -65,7 +65,7 @@ fuite entre deux clients et c'est la confiance dans le produit qui tombe.
 Base mutualisée, et filtrage explicite concentré dans la couche Service. Deux
 approches plus séduisantes sur le papier ont été écartées.
 
-**Une base par client.** Écartée pour son coût opérationnel : plus de deux
+**Une base par client.** Écartée pour son coût opérationnel : près de quatre
 cents modèles à migrer autant de fois qu'il y a de clients, et surtout des
 besoins transverses — pilotage, facturation, support, connecteurs — qui
 seraient tous devenus des agrégations entre bases. Beaucoup de complexité pour
@@ -167,11 +167,13 @@ Trois choix qu'on assume, et ce qu'ils coûtent :
 
 ## Résultat
 
-<!-- TODO(contenu) : où en est la plateforme aujourd'hui. Nombre de modules en
-     production, clients ou prestataires utilisateurs, volume de tickets
-     traités, ancienneté du plus vieux client. Un chiffre vérifiable vaut mieux
-     que trois adjectifs — et si les chiffres sont confidentiels, une phrase
-     qualitative honnête vaut mieux qu'un chiffre flou. -->
+Sept ans après le premier commit, la plateforme est en production et continue
+d'évoluer : un peu plus de **21 000 commits**, une quinzaine de contributeurs,
+huit modules produit sur un socle commun.
+
+En volume : environ **460 000 lignes de code applicatif**, 250 000 lignes de
+vues, 374 modèles, 358 tables, et 800 fichiers de tests dont **117 parcours
+utilisateur de bout en bout**.
 
 ## Mon rôle
 

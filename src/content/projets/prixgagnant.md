@@ -10,13 +10,16 @@ stack:
   - Bootstrap
 ordre: 2
 vedette: false
-brouillon: false
+brouillon: true
 ---
 
-> **Contenu à écrire.** L'angle ci-dessous est une proposition : entre 2007 et
-> 2013, tu construisais déjà des comparateurs de prix en freelance. Y revenir
-> en 2020 avec dix ans de métier en plus est une bien meilleure histoire qu'un
-> simple projet perso. Dis-moi si l'angle te va, et donne-moi la matière.
+> **Brouillon — non publié.** Grégory compte refaire le projet ; la page
+> attendra qu'il existe sous sa nouvelle forme. Le fichier reste ici pour
+> garder la matière : passer `brouillon` à `false` suffira à le publier.
+>
+> L'angle proposé : entre 2007 et 2019, il construisait déjà des comparateurs
+> de prix en freelance. Y revenir avec dix ans de métier en plus raconte
+> mieux qu'un simple projet personnel.
 
 ## Contexte
 

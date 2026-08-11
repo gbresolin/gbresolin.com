@@ -26,12 +26,25 @@ async function* fichiers(dossier) {
   }
 }
 
+/** Un .md dont le frontmatter porte `brouillon: true` n'est pas construit. */
+function estBrouillon(contenu) {
+  const frontmatter = contenu.match(/^---\n([\s\S]*?)\n---/);
+  return frontmatter ? /^brouillon:\s*true\s*$/m.test(frontmatter[1]) : false;
+}
+
 const trouvailles = [];
+const brouillonsIgnores = [];
 
 for (const cible of CIBLES) {
   for await (const chemin of fichiers(join(RACINE, cible))) {
     const contenu = await readFile(chemin, 'utf8');
     if (!MARQUEUR.test(contenu)) continue;
+
+    // Un brouillon a le droit d'être incomplet : il ne part pas en ligne.
+    if (estBrouillon(contenu)) {
+      brouillonsIgnores.push(relative(RACINE, chemin));
+      continue;
+    }
 
     contenu.split('\n').forEach((ligne, i) => {
       if (MARQUEUR.test(ligne)) {
@@ -43,6 +56,12 @@ for (const cible of CIBLES) {
       }
     });
   }
+}
+
+if (brouillonsIgnores.length > 0) {
+  console.log(
+    `· ${brouillonsIgnores.length} brouillon(s) ignoré(s) : ${brouillonsIgnores.join(', ')}`
+  );
 }
 
 if (trouvailles.length === 0) {
