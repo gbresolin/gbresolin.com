@@ -17,10 +17,15 @@ const annees = new Date().getFullYear() - site.debutCarriere;
   </h1>
 
   {/* Chapô sur toute la largeur. La taille est relevée par rapport au corps de
-      texte pour que la ligne reste lisible malgré la largeur. */}
+      texte pour que la ligne reste lisible malgré la largeur.
+
+      L'ordre des propositions n'est pas indifférent : la promesse de bout en
+      bout passe avant l'ancienneté, et Claude Code ferme la phrase au rang
+      d'outil. Une formulation en « aujourd'hui je code avec l'IA » installait
+      un avant/après qui invitait le lecteur à déprécier les années de métier. */}
   <p class="mt-10 border-t border-rule pt-8 text-chapo text-ink-soft text-pretty">
-    <strong class="font-medium text-ink">{site.role}</strong> depuis {annees} ans.
-    Je conçois des applications métier Laravel, et je les construis aujourd'hui
-    avec Claude Code — de la première ligne jusqu'à la mise en production.
+    <strong class="font-medium text-ink">{site.role}.</strong> De la première
+    ligne jusqu'à la mise en production : je conçois, j'arbitre et je livre des
+    applications métier Laravel. {annees} ans de métier, Claude Code comme outil.
   </p>
 </section>

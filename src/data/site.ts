@@ -6,8 +6,10 @@ export const site = {
   nom: 'Grégory Bresolin',
   prenom: 'Grégory',
   patronyme: 'Bresolin',
-  role: 'Développeur fullstack',
-  poste: 'Associé et développeur chez ISI-APP',
+  // « Lead » plutôt que « fullstack » : fullstack dit l'étendue, lead dit le
+  // niveau de responsabilité — encadrement, revue, arbitrage.
+  role: 'Lead developer',
+  poste: 'Associé et lead developer chez ISI-APP',
   /** Premier statut professionnel : webmaster freelance à son compte. */
   debutCarriere: 2007,
   societe: {
@@ -22,7 +24,7 @@ export const site = {
   url: 'https://www.gbresolin.com',
   email: 'contact@gbresolin.com',
   description:
-    'Développeur fullstack à Lyon. Applications métier Laravel, conçues et déployées avec Claude Code.',
+    'Lead developer à Lyon. Applications métier Laravel, de la première ligne jusqu’à la mise en production.',
   liens: {
     // Compte personnel. Le compte Grego01600 est le compte professionnel et
     // n'a pas vocation à apparaître ici.

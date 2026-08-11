@@ -2,7 +2,7 @@
 titre: Isi-APP
 resume: SaaS multi-modules pour piloter un système d'information — ticketing, gestion de projet, parc et entités — avec un espace prestataire multi-clients.
 annee: '2019 — aujourd’hui'
-role: Associé et développeur salarié, ISI-APP
+role: Associé et lead developer, ISI-APP
 statut: en cours
 stack:
   - Laravel
@@ -173,9 +173,9 @@ Trois choix qu'on assume, et ce qu'ils coûtent :
 
 ## Mon rôle
 
-Je suis **associé d'ISI-APP**, et j'y travaille comme **développeur salarié**.
-Je n'ai pas quitté le code en devenant associé : je porte le produit sur le
-plan technique et je participe aux décisions de la société.
+Je suis **associé d'ISI-APP** et **lead developer** sur la plateforme :
+j'encadre l'équipe, je relis le code, et je porte les décisions techniques du
+produit. Je n'ai pas quitté le code en devenant associé.
 
 Sept ans sur la même plateforme, c'est une position particulière — on ne livre
 pas puis on s'en va, on vit avec ce qu'on a construit et on le reprend quand
