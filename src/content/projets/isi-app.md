@@ -9,7 +9,7 @@ stack:
   - Laravel
   - Livewire
   - Alpine.js
-  - Tailwind CSS
+  - Bootstrap
   - MySQL
 ordre: 1
 vedette: true
@@ -115,8 +115,13 @@ pas la situation : la surcouche coûterait plus qu'elle ne rapporterait.
 
 ### Livewire plutôt qu'une SPA
 
-Près de huit cents composants Livewire, plus de deux mille vues, et aucun
-framework front.
+Ce n'était pas le point de départ. En 2019, à deux et sans code existant, on
+est partis sur ce qu'on maîtrisait : **jQuery**. Livewire l'a remplacé
+progressivement, écran par écran, à mesure que le produit grossissait — et la
+migration n'est pas terminée.
+
+Aujourd'hui : près de huit cents composants Livewire, plus de deux mille vues,
+et aucun framework front.
 
 **Ce que ça a fait gagner.** Le gain principal découle directement du point
 précédent : sans API dédiée à l'interface, le modèle de droits et le filtrage
@@ -141,9 +146,11 @@ lents et plus fragiles que des tests de composants. Et aucune API réutilisable
 n'existe en sous-produit : le jour où une application mobile deviendra
 nécessaire, elle sera à construire.
 
-Le vrai coût, cela dit, n'est pas Livewire : c'est le **double paradigme**. Du
-Livewire moderne cohabite avec un héritage plus ancien, et c'est cette
-hétérogénéité — pas le framework — qui pèse le plus au quotidien.
+Le vrai coût, cela dit, n'est pas Livewire : c'est le **double paradigme**. Le
+Livewire d'aujourd'hui cohabite encore avec le jQuery des débuts, et c'est
+cette hétérogénéité — pas le framework — qui pèse le plus au quotidien. C'est
+le prix d'un produit qu'on fait vivre plutôt qu'on ne réécrit : on migre là où
+ça compte, on laisse le reste tant qu'il tient.
 
 **Le verdict.** Pour un ERP B2B multi-clients où le facteur limitant est le
 volume d'écrans et la complexité du modèle de droits, et non la fluidité de
