@@ -9,9 +9,33 @@ import ProjetsListe from '../components/ProjetsListe.astro';
 import Contact from '../components/Contact.astro';
 import PiedDePage from '../components/PiedDePage.astro';
 import { site } from '../data/site';
+
+// Décrit la personne pour les moteurs de recherche. `sameAs` relie le site aux
+// profils externes, ce qui permet à Google de les rattacher à la même entité.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.nom,
+  url: site.url,
+  image: `${site.url}/og.png`,
+  jobTitle: site.role,
+  email: `mailto:${site.email}`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: site.localisation,
+    addressCountry: 'FR',
+  },
+  worksFor: {
+    '@type': 'Organization',
+    name: site.societe.nom,
+    url: site.societe.site,
+  },
+  knowsAbout: ['Laravel', 'PHP', 'Livewire', 'Alpine.js', 'Tailwind CSS', 'MySQL'],
+  sameAs: [site.liens.github, site.liens.linkedin],
+};
 ---
 
-<Base titre={`${site.nom} — ${site.role}`}>
+<Base titre={`${site.nom} — ${site.role}`} {schema}>
   <Entete />
   <main>
     <Hero />

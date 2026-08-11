@@ -10,6 +10,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "check:contenu": "node scripts/check-contenu.mjs",
+    "og": "node scripts/generer-og.mjs",
     "deploy": "bash scripts/deploy.sh",
     "deploy:prod": "bash scripts/deploy.sh --prod"
   },
