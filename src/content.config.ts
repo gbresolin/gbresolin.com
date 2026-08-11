@@ -1,5 +1,7 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+// zod vient d'astro/zod : le `z` réexporté par astro:content est déprécié.
+import { z } from 'astro/zod';
 
 /**
  * Un fichier Markdown par projet dans src/content/projets/.

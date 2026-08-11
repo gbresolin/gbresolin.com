@@ -25,6 +25,8 @@ const { id, eyebrow, titre, filet = true } = Astro.props;
     <div class="md:sticky md:top-28 md:self-start">
       <p class="eyebrow">{eyebrow}</p>
       <h2 class="mt-3 text-heading text-balance">{titre}</h2>
+      {/* Colonne de gauche, sous le titre. Vide par défaut. */}
+      <slot name="aside" />
     </div>
 
     <div>

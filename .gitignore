@@ -17,6 +17,8 @@ deploy_key*
 # système
 .DS_Store
 Thumbs.db
+# métadonnées déposées par Windows sur les fichiers copiés dans WSL
+*:Zone.Identifier
 
 # éditeurs
 .vscode/
