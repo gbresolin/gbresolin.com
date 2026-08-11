@@ -1,0 +1,45 @@
+---
+import { site } from '../data/site';
+
+/**
+ * Frise du parcours, affichée sous « Qui je suis ».
+ *
+ * Les durées sont calculées à partir des deux seules années de référence :
+ * elles restent justes sans intervention, et cohérentes entre elles.
+ */
+const maintenant = new Date().getFullYear();
+
+const etapes = [
+  {
+    periode: `${site.debutCarriere} — 2019`,
+    duree: site.societe.depuisProduit - site.debutCarriere,
+    titre: 'À mon compte',
+    detail: 'Comparateurs de prix, plateformes grand public',
+  },
+  {
+    periode: `2019 — aujourd’hui`,
+    duree: maintenant - site.societe.depuisProduit,
+    titre: 'Isi-APP',
+    detail: 'Développeur, puis lead developer',
+  },
+];
+---
+
+<ol class="mt-14 border-t border-rule">
+  {
+    etapes.map((etape) => (
+      <li class="grid gap-x-6 gap-y-1 border-b border-rule py-5 sm:grid-cols-[9rem_1fr_auto] sm:items-baseline">
+        <span class="eyebrow tabular-nums">{etape.periode}</span>
+
+        <div>
+          <h3 class="font-medium text-ink">{etape.titre}</h3>
+          <p class="mt-0.5 text-sm text-ink-soft">{etape.detail}</p>
+        </div>
+
+        <span class="font-mono text-xs text-accent tabular-nums sm:text-right">
+          {etape.duree} ans
+        </span>
+      </li>
+    ))
+  }
+</ol>

@@ -15,7 +15,10 @@
   --c-raised: #f2f0ea; /* blocs en léger retrait du fond */
   --c-ink: #16150f; /* texte principal */
   --c-ink-soft: #5d594f; /* texte secondaire, légendes */
-  --c-ink-faint: #8d887c; /* métadonnées, numérotation */
+  /* Assombri pour atteindre 4.5:1 sur la surface : les libellés en petites
+     capitales font 12px, donc relèvent du seuil « texte normal » de WCAG AA.
+     La valeur d'origine plafonnait à 3.36:1. */
+  --c-ink-faint: #777266; /* métadonnées, numérotation */
   --c-rule: #e2ded4; /* filets, séparateurs */
   --c-accent: #9c3d17; /* terracotta profond */
   --c-accent-soft: #f0e6df; /* fond d'accent très dilué */
@@ -30,7 +33,7 @@
     --c-raised: #1c1a17;
     --c-ink: #f5f2ec;
     --c-ink-soft: #a8a294;
-    --c-ink-faint: #767061;
+    --c-ink-faint: #827c6d; /* éclairci : 3.83:1 → 4.54:1 */
     --c-rule: #2c2925;
     --c-accent: #e79063;
     --c-accent-soft: #2a1d14;
@@ -55,8 +58,7 @@
   --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace;
 
   /* Échelle typographique fluide.
-     Le display descend jusqu'à 2.75rem pour rester lisible à 320px. */
-  /* « Grégory Bresolin » sur une seule ligne à toutes les largeurs. Le
+     « Grégory Bresolin » sur une seule ligne à toutes les largeurs. Le
      plancher de 2.25rem tient dans 320px avec de la marge — mesuré, le texte
      y occupe environ deux tiers de la place disponible. Une formule unique
      plutôt qu'un régime mobile distinct : deux courbes différentes
@@ -68,10 +70,6 @@
   /* Chapô du hero : entre le corps de texte et les titres de section. */
   --text-chapo: clamp(1.25rem, 2.1vw, 1.75rem);
   --text-chapo--line-height: 1.45;
-
-  /* Chiffres-clés du hero. Assez grands pour se lire d'un coup d'œil, assez
-     petits pour ne pas concurrencer le nom. */
-  --text-chiffre: clamp(1.875rem, 3.6vw, 2.75rem);
 
   --text-title: clamp(2rem, 5.5vw, 3.75rem);
   --text-title--line-height: 1.05;
@@ -156,10 +154,6 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Composants récurrents
---------------------------------------------------------------------------- */
-
-/* ---------------------------------------------------------------------------
    Animation d'entrée
    Réservée au hero : animer plus bas supposerait un observateur de défilement,
    donc du JavaScript, que le site n'embarque pas. L'état d'arrivée n'est pas
@@ -188,9 +182,11 @@
       animation: none;
     }
   }
-}
 
-@layer components {
+  /* -------------------------------------------------------------------------
+     Composants récurrents
+  ------------------------------------------------------------------------- */
+
   /* Petit intitulé en capitales espacées qui coiffe chaque section */
   .eyebrow {
     font-family: var(--font-mono);
