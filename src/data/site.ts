@@ -9,7 +9,9 @@ export const site = {
   // « Lead » plutôt que « fullstack » : fullstack dit l'étendue, lead dit le
   // niveau de responsabilité — encadrement, revue, arbitrage.
   role: 'Lead developer Laravel',
-  poste: 'Associé et lead developer chez ISI-APP',
+  // La qualité d'associé est volontairement absente du site tant que le sujet
+  // n'a pas été vu avec les co-associés d'ISI-APP.
+  poste: 'Lead developer chez ISI-APP',
   /** Premier statut professionnel : webmaster freelance à son compte. */
   debutCarriere: 2007,
   societe: {
