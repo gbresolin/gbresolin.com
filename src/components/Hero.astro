@@ -4,28 +4,29 @@ import { site } from '../data/site';
 const annees = new Date().getFullYear() - site.debutCarriere;
 ---
 
-<section
-  id="contenu"
-  class="mx-auto max-w-(--container-page) px-6 pb-4 pt-10 md:px-10 md:pb-6 md:pt-14"
->
-  {/* Une seule ligne quelle que soit la largeur d'écran : la taille est
-      pilotée par --ts-display, calibrée pour que le nom tienne sans déborder
-      dès 320px. */}
-  <h1 class="apparait text-display whitespace-nowrap">
-    {site.prenom} {site.patronyme}
-  </h1>
+{/* Fond pleine largeur : c'est le décroché avec la surface crème du reste de
+    la page qui fait exister le premier écran. L'en-tête porte la même teinte,
+    les deux formant un seul bloc d'ouverture. */}
+<section id="contenu" class="bg-hero text-hero-texte">
+  <div
+    class="mx-auto max-w-(--container-page) px-6 pb-14 pt-10 md:px-10 md:pb-20 md:pt-14"
+  >
+    {/* Une seule ligne quelle que soit la largeur d'écran : la taille est
+        pilotée par --text-display, calibrée pour que le nom tienne sans
+        déborder dès 320px. */}
+    <h1 class="apparait text-display whitespace-nowrap">
+      {site.prenom} {site.patronyme}
+    </h1>
 
-  {/* Chapô sur toute la largeur, dans une taille relevée par rapport au corps
-      de texte pour que la ligne reste lisible malgré la largeur.
-
-      Claude Code n'y figure pas volontairement : le sujet est traité en
-      section 02, où il y a la place de l'expliquer. Mentionné ici, il
-      installait un avant/après qui invitait à déprécier les années de métier. */}
-  <div class="apparait mt-10 border-t border-rule pt-8" style="--delai: 110ms">
-    <p class="text-chapo font-medium text-ink">{site.role}</p>
-    <p class="mt-3 text-chapo text-ink-soft text-pretty">
-      Je conçois, j'arbitre et je livre des applications métier — de la
-      première ligne jusqu'à la mise en production. {annees} ans d'expérience.
-    </p>
+    <div
+      class="apparait mt-10 border-t border-hero-filet pt-8"
+      style="--delai: 110ms"
+    >
+      <p class="text-chapo font-medium text-hero-accent">{site.role}</p>
+      <p class="mt-3 text-chapo text-hero-doux text-pretty">
+        Je conçois, j'arbitre et je livre des applications métier — de la
+        première ligne jusqu'à la mise en production. {annees} ans d'expérience.
+      </p>
+    </div>
   </div>
 </section>

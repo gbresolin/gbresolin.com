@@ -23,6 +23,14 @@
   --c-accent: #9c3d17; /* terracotta profond */
   --c-accent-soft: #f0e6df; /* fond d'accent très dilué */
 
+  /* Bloc d'ouverture — en-tête et hero. Sa palette est indépendante de celle
+     de la page : c'est ce contraste avec la surface crème qui le fait exister
+     dès le premier coup d'œil. */
+  --c-hero: #16150f;
+  --c-hero-texte: #faf9f7;
+  --c-hero-doux: #b3ad9f;
+  --c-hero-accent: #e79063;
+  --c-hero-filet: #3a362f;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,6 +45,14 @@
     --c-rule: #2c2925;
     --c-accent: #e79063;
     --c-accent-soft: #2a1d14;
+
+    /* En thème sombre, l'encre du hero se confondrait avec la page : le
+       décroché se fait alors vers le haut, sur la teinte des blocs en relief. */
+    --c-hero: #24211d;
+    --c-hero-texte: #f5f2ec;
+    --c-hero-doux: #a8a294;
+    --c-hero-accent: #e79063;
+    --c-hero-filet: #453f37;
   }
 }
 
@@ -50,6 +66,12 @@
   --color-rule: var(--c-rule);
   --color-accent: var(--c-accent);
   --color-accent-soft: var(--c-accent-soft);
+
+  --color-hero: var(--c-hero);
+  --color-hero-texte: var(--c-hero-texte);
+  --color-hero-doux: var(--c-hero-doux);
+  --color-hero-accent: var(--c-hero-accent);
+  --color-hero-filet: var(--c-hero-filet);
 
   /* Familles — --ff-display et --ff-body sont injectées par astro:assets,
      fallbacks déjà inclus (voir la clé `fallbacks` dans astro.config.mjs). */

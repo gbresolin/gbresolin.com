@@ -10,15 +10,18 @@ const { racine = true } = Astro.props;
 const prefixe = racine ? '' : '/';
 ---
 
+{/* Même teinte que le hero : l'en-tête en prolonge le bloc plutôt que de poser
+    une bande claire au-dessus. Il la conserve au défilement, où elle tranche
+    alors sur la surface crème. */}
 <header
-  class="sticky top-0 z-40 border-b border-rule/60 bg-surface/85 backdrop-blur-sm"
+  class="sticky top-0 z-40 bg-hero/95 text-hero-texte backdrop-blur-sm"
 >
   <div
     class="mx-auto flex max-w-(--container-page) items-center justify-between gap-6 px-6 py-4 md:px-10"
   >
     <a
       href="/"
-      class="font-display text-lg leading-none tracking-tight transition-colors hover:text-accent"
+      class="font-display text-lg leading-none tracking-tight transition-colors hover:text-hero-accent"
     >
       {site.nom}
     </a>
@@ -30,7 +33,7 @@ const prefixe = racine ? '' : '/';
             <li class="hidden sm:block">
               <a
                 href={`${prefixe}#${s.id}`}
-                class="text-ink-soft transition-colors hover:text-ink"
+                class="text-hero-doux transition-colors hover:text-hero-texte"
               >
                 {s.libelle}
               </a>
@@ -40,7 +43,7 @@ const prefixe = racine ? '' : '/';
         <li>
           <a
             href={`mailto:${site.email}`}
-            class="rounded-full border border-ink px-4 py-1.5 text-sm transition-colors hover:bg-ink hover:text-surface"
+            class="rounded-full border border-hero-doux/60 px-4 py-1.5 text-sm transition-colors hover:border-hero-accent hover:text-hero-accent"
           >
             Me contacter
           </a>
