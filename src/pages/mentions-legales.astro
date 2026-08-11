@@ -21,16 +21,16 @@ import { site } from '../data/site';
     <div class="legal mt-16 max-w-(--container-reading)">
       <h2>Éditeur du site</h2>
       <p>
-        {/* TODO(contenu) : confirmer le statut. L'ancien site déclarait
-            « AE Gregory Bresolin » avec l'adresse personnelle. Si
-            l'auto-entreprise n'est plus active, il faut retirer la mention et
-            le numéro SIREN. Pour un site vitrine non marchand, publier
-            l'adresse personnelle n'est pas obligatoire — l'email suffit. */}
-        {site.nom}<br />
-        Contact : <a href={`mailto:${site.email}`}>{site.email}</a>
+        Ce site est un site personnel non marchand, édité à titre privé par
+        {' '}<strong>{site.nom}</strong>, personne physique.
       </p>
       <p>
+        Contact : <a href={`mailto:${site.email}`}>{site.email}</a><br />
         Directeur de la publication : {site.nom}.
+      </p>
+      <p>
+        Aucune activité commerciale n'est exercée depuis ce site : il ne
+        propose ni vente, ni prestation, ni collecte de commande.
       </p>
 
       <h2>Hébergement</h2>

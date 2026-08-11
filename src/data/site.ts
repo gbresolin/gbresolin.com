@@ -15,8 +15,8 @@ export const site = {
   description:
     'Développeur fullstack à Lyon. Applications métier Laravel, conçues et déployées avec Claude Code.',
   liens: {
-    // TODO(contenu) : vérifier le bon compte — le site actuel pointe vers
-    // github.com/gbresolin, le compte connecté en local est Grego01600.
+    // Compte personnel. Le compte Grego01600 est le compte professionnel et
+    // n'a pas vocation à apparaître ici.
     github: 'https://github.com/gbresolin',
     linkedin: 'https://www.linkedin.com/in/gregory-bresolin-74a51b167/',
   },

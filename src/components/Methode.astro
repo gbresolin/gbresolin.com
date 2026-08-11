@@ -1,5 +1,6 @@
 ---
 import Section from './Section.astro';
+import { site } from '../data/site';
 
 /* TODO(contenu) : à valider et réécrire avec Grégory — c'est la section qui
    porte le différenciateur, elle doit sonner juste. */
@@ -56,9 +57,8 @@ const etapes = [
     class="mt-10 border-l-2 border-accent bg-accent-soft px-5 py-4 text-sm text-ink-soft text-pretty"
   >
     Ce site en est un exemple : conçu, écrit, versionné et déployé avec Claude
-    Code. Le code est <a
-      href="https://github.com/gbresolin/gbresolin.com"
-      class="link">public sur GitHub</a
+    Code. Le code est <a href={`${site.liens.github}/gbresolin.com`} class="link"
+      >public sur GitHub</a
     >.
   </p>
 </Section>
