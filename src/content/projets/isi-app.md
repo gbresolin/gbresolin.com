@@ -42,6 +42,10 @@ gestion de projet, jusqu'au décisionnel et à des modules dédiés à des méti
 particuliers. Plutôt que d'empiler des outils qui ne se parlent pas, tout vit
 dans la même base et le même référentiel.
 
+![Module de ticketing en vue Kanban](../../assets/isi-app/ticketing.png)
+*Le ticketing, en vue Kanban. Les mêmes données s'affichent aussi en tableau,
+avec tri, filtres et export.*
+
 ## Contraintes
 
 Deux difficultés structurent le projet, et ce sont elles qui déterminent
@@ -61,6 +65,11 @@ l'utilisateur, le client sur lequel il intervient, et le module concerné.
 
 Sur ce type de cloisonnement, il n'existe pas de demi-réussite : une seule
 fuite entre deux clients et c'est la confiance dans le produit qui tombe.
+
+![Espace prestataire listant les clients et leurs droits](../../assets/isi-app/presta-clients.png)
+*L'espace prestataire : chaque ligne est un client, avec le niveau de
+délégation accordé et les modules ouverts. C'est ce croisement — utilisateur,
+client, module — qui doit être vérifié à chaque requête.*
 
 ## Décisions d'architecture
 
@@ -110,6 +119,10 @@ services regroupés par domaine.
 Le découplage réel est donc porté par la donnée, pas par le code — et pour un
 SaaS où chaque client a un périmètre différent, c'est le bon endroit. Le
 catalogue est éditable à chaud, sans build conditionnel ni artefact par client.
+
+![Module portail affichant des actualités](../../assets/isi-app/actus.png)
+*Un autre module, un autre métier : le portail de communication interne. Même
+socle, même référentiel d'entités — seule la ligne d'abonnement change.*
 
 Le revers est net : aucune frontière n'est vérifiée par un outil. Rien
 n'empêche techniquement un domaine d'aller chercher dans un autre, et ce

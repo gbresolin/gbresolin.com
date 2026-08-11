@@ -200,6 +200,36 @@ const meta = [
     margin-top: 0;
   }
 
+  /* Les captures sortent de la mesure de lecture : réduites à la largeur du
+     texte, elles seraient illisibles. Elles s'étendent vers la droite, sans
+     jamais dépasser la fenêtre. */
+  .etude-de-cas :global(p:has(> img)) {
+    width: min(58rem, calc(100vw - 3rem));
+    margin-top: 2.5rem;
+  }
+
+  .etude-de-cas :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* Les captures ont un fond blanc : sans bordure elles baveraient sur la
+       surface crème de la page. */
+    border: 1px solid var(--color-rule);
+    border-radius: 3px;
+  }
+
+  /* L'italique qui suit l'image dans le même paragraphe fait office de
+     légende. */
+  .etude-de-cas :global(p:has(> img) em) {
+    display: block;
+    max-width: var(--container-reading);
+    margin-top: 0.75rem;
+    font-size: 0.8125rem;
+    font-style: normal;
+    line-height: 1.5;
+    color: var(--color-ink-faint);
+  }
+
   .etude-de-cas :global(code) {
     font-family: var(--font-mono);
     font-size: 0.875em;
