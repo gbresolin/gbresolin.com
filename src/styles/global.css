@@ -159,6 +159,37 @@
    Composants récurrents
 --------------------------------------------------------------------------- */
 
+/* ---------------------------------------------------------------------------
+   Animation d'entrée
+   Réservée au hero : animer plus bas supposerait un observateur de défilement,
+   donc du JavaScript, que le site n'embarque pas. L'état d'arrivée n'est pas
+   déclaré — c'est l'état naturel de l'élément, ce qui garantit qu'un contenu
+   reste visible même si l'animation ne s'exécute pas.
+--------------------------------------------------------------------------- */
+
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+}
+
+@layer components {
+  .apparait {
+    /* `both` applique l'état initial dès avant le délai : sans lui, l'élément
+       clignoterait entre son affichage et le début de l'animation. */
+    animation: apparition 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--delai, 0ms);
+  }
+
+  /* Le réglage système prime : ni fondu ni déplacement, affichage direct. */
+  @media (prefers-reduced-motion: reduce) {
+    .apparait {
+      animation: none;
+    }
+  }
+}
+
 @layer components {
   /* Petit intitulé en capitales espacées qui coiffe chaque section */
   .eyebrow {
