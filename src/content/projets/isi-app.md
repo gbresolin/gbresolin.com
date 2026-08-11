@@ -32,11 +32,11 @@ SI** — et le mot *française* n'est pas un argument commercial ajouté après
 coup : la souveraineté était dans le cahier des charges dès la première ligne,
 et elle contraint les choix techniques.
 
-Sept ans plus tard, l'équipe a grandi et le catalogue s'est étoffé :
-**gestion de parc informatique**, **ticketing**, **gestion des projets**,
-**gestion des entités et des adresses**, et d'autres modules encore. Plutôt
-que d'empiler des outils qui ne se parlent pas, tout vit dans la même base et
-le même référentiel.
+Sept ans plus tard, l'équipe a grandi et le produit compte **huit modules** —
+de la gestion des identités et du parc informatique au ticketing et à la
+gestion de projet, jusqu'au décisionnel et à des modules dédiés à des métiers
+particuliers. Plutôt que d'empiler des outils qui ne se parlent pas, tout vit
+dans la même base et le même référentiel.
 
 ## Contraintes
 
