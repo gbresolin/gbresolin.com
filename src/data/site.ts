@@ -7,8 +7,16 @@ export const site = {
   prenom: 'Grégory',
   patronyme: 'Bresolin',
   role: 'Développeur fullstack',
-  // TODO(contenu) : intitulé de poste exact chez ISI-DSI
-  poste: 'Lead developer chez ISI-DSI',
+  // TODO(contenu) : intitulé de poste exact chez ISI-APP (et mention éventuelle
+  // du rôle dans la création de la société).
+  poste: 'ISI-APP',
+  societe: {
+    nom: 'ISI-APP',
+    groupe: 'ISI-Groupe',
+    depuis: '2023',
+    activite: 'édition de logiciel',
+    produit: 'La boîte à outils française pour piloter et simplifier votre SI',
+  },
   localisation: 'Lyon',
   url: 'https://www.gbresolin.com',
   email: 'contact@gbresolin.com',
