@@ -32,10 +32,11 @@ SI** — et le mot *française* n'est pas un argument commercial ajouté après
 coup : la souveraineté était dans le cahier des charges dès la première ligne,
 et elle contraint les choix techniques.
 
-Sept ans plus tard, l'équipe a grandi et le produit couvre la **gestion de
-parc informatique**, le **ticketing**, la **gestion des projets** et celle des
-**entités et des adresses**. Plutôt que d'empiler quatre outils qui ne se
-parlent pas, tout vit dans la même base et le même référentiel.
+Sept ans plus tard, l'équipe a grandi et le catalogue s'est étoffé :
+**gestion de parc informatique**, **ticketing**, **gestion des projets**,
+**gestion des entités et des adresses**, et d'autres modules encore. Plutôt
+que d'empiler des outils qui ne se parlent pas, tout vit dans la même base et
+le même référentiel.
 
 ## Contraintes
 
@@ -45,8 +46,8 @@ l'essentiel des choix techniques.
 **Maintenir plusieurs modules dans un même produit.** Chaque module a son
 métier, son vocabulaire et son rythme d'évolution, mais tous partagent le même
 référentiel d'entités. Faire évoluer l'un sans casser les autres suppose des
-frontières nettes et un socle commun réellement commun — pas quatre
-applications déguisées en une seule.
+frontières nettes et un socle commun réellement commun — pas une collection
+d'applications déguisée en produit unique.
 
 **L'espace prestataire.** Un prestataire gère plusieurs clients, et doit les
 piloter depuis une seule interface sans jamais voir ce qui ne le regarde pas.
