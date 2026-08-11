@@ -8,33 +8,38 @@ import { site } from '../data/site';
   <Portrait slot="aside" />
   <div class="prose-editorial">
     <p>
-      Je suis lead developer à {site.localisation}. J'ai passé les
-      douze premières années de ma carrière à mon compte, de
-      {' '}{site.debutCarriere} à 2019 : webmaster puis développeur freelance,
-      sur des comparateurs de prix et des sites de rencontre. On apprend vite
-      quand on est seul à répondre du résultat.
-    </p>
-    <p>
-      Je suis passé par l'école IPI Lyon comme concepteur développeur
-      d'applications, et j'ai orienté mon travail vers les applications
-      métier — celles qui ont de vrais utilisateurs, de vraies contraintes et
-      des données qu'on n'a pas le droit de perdre.
-    </p>
-    <p>
-      Depuis <strong>2019</strong>, je travaille sur la même solution :
-      {' '}<strong>Isi-APP</strong>. D'abord comme développeur au sein
-      d'ISI-DSI, puis chez <strong>ISI-APP</strong> lorsque le groupe a séparé
-      son activité de services de son activité d'édition, en 2023. J'y suis
-      aujourd'hui associé et lead developer : j'encadre l'équipe et je porte
-      les décisions techniques, sans avoir quitté le code pour le tableur.
-    </p>
-    <p>
-      Douze ans de freelance puis sept ans sur le même produit : les deux
+      Douze ans à mon compte, puis sept ans sur le même produit. Les deux
       moitiés de ce parcours enseignent des choses opposées, et j'ai eu besoin
-      des deux. Le freelance apprend à livrer ; l'édition apprend à vivre avec
-      ce qu'on a livré. Celles de mes décisions d'architecture qui visaient à
-      aller vite, je les ai repayées ; celles qui étaient justes portent
-      encore.
+      des deux : <strong
+        >le freelance apprend à livrer ; l'édition apprend à vivre avec ce
+        qu'on a livré.</strong
+      >
+    </p>
+    <p>
+      De {site.debutCarriere} à 2019, j'ai travaillé seul depuis {
+        site.localisation
+      }, pour mes propres clients : des comparateurs de prix, des plateformes
+      grand public.{' '}
+      {/* TODO(contenu) : une phrase concrète sur ce que ces projets ont
+          imposé techniquement — volumétrie, disponibilité, paiement en ligne,
+          modération. C'est ce qui transforme « sites de rencontre » en
+          référence technique plutôt qu'en anecdote. */}
+      On apprend vite quand on est seul à répondre du résultat : le devis,
+      l'architecture, la mise en ligne, et le téléphone qui sonne quand ça
+      casse.
+    </p>
+    <p>
+      Je me suis ensuite orienté vers les applications métier — celles qui ont
+      de vrais utilisateurs, de vraies contraintes, et des données qu'on n'a
+      pas le droit de perdre. Depuis 2019, je travaille sur
+      {' '}<strong>Isi-APP</strong>, une plateforme de pilotage de système
+      d'information dont je suis aujourd'hui lead developer et associé, sans
+      avoir quitté le code pour le tableur.
+    </p>
+    <p>
+      Cette seconde moitié m'a appris ce qu'aucune mission courte n'enseigne :
+      on vit avec ses décisions d'architecture. Celles qui visaient à aller
+      vite, je les ai repayées ; celles qui étaient justes portent encore.
     </p>
   </div>
 </Section>
