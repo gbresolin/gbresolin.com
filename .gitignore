@@ -8,6 +8,8 @@ node_modules/
 # environnement
 .env
 .env.production
+# informations de connexion au serveur — le dépôt est public
+.env.deploy
 
 # secrets de déploiement — ne doivent jamais être versionnés
 *.pem

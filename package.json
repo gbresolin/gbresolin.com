@@ -9,7 +9,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "check:contenu": "node scripts/check-contenu.mjs"
+    "check:contenu": "node scripts/check-contenu.mjs",
+    "deploy": "bash scripts/deploy.sh",
+    "deploy:prod": "bash scripts/deploy.sh --prod"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

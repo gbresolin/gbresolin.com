@@ -11,6 +11,8 @@ npm run build          # génère dist/
 npm run preview        # sert dist/ pour vérifier le rendu réel
 npm run check          # vérification des types Astro
 npm run check:contenu  # échoue s'il reste des marqueurs TODO(contenu)
+npm run deploy         # déploie en préproduction
+npm run deploy:prod    # déploie en production, avec confirmation
 ```
 
 ## Ajouter ou modifier un projet
@@ -46,14 +48,20 @@ Aucun code à toucher pour ajouter un projet.
 
 ## Déploiement
 
-`main` → GitHub Actions → rsync SSH vers o2switch.
+Manuel, depuis la machine de Grégory : `scripts/deploy.sh` construit le site
+puis l'envoie en rsync SSH vers o2switch. La configuration vit dans
+`.env.deploy`, non versionné (le dépôt est public) — modèle dans
+`.env.deploy.example`.
 
-Un push déploie en **préproduction** (avec `noindex` forcé). La **production**
-exige un déclenchement manuel via `workflow_dispatch`, et refuse de partir s'il
-reste des `TODO(contenu)`.
+La préproduction reçoit un `noindex` forcé. La production demande confirmation
+et refuse de partir s'il reste des `TODO(contenu)`.
 
-Secrets requis : `SSH_HOST`, `SSH_USER`, `SSH_PORT`, `SSH_PRIVATE_KEY`,
-`SSH_KNOWN_HOSTS`, `CHEMIN_PREPRODUCTION`, `CHEMIN_PRODUCTION`.
+**Pourquoi pas de CI/CD :** o2switch protège le SSH par une liste blanche d'IP,
+sans plages et limitée à cinq exceptions. Un runner GitHub Actions changeant
+d'IP à chaque exécution, il faudrait l'autoriser puis la retirer via l'API
+cPanel à chaque déploiement. Pour un site mis à jour de temps en temps, la
+complexité n'en valait pas la peine. Si le besoin change, la bascule est
+documentée côté o2switch.
 
 ## Pièges connus
 
