@@ -17,6 +17,10 @@ export const site = {
   societe: {
     nom: 'ISI-APP',
     groupe: 'ISI-Groupe',
+    /** Application elle-même : cible des liens produit du site. */
+    app: 'https://app.isi-app.com/',
+    /** Site public de la société : sert d'URL d'organisation en JSON-LD, où
+     *  une page de connexion n'aurait pas de sens. */
     site: 'https://isi-app.com',
     /** Année d'arrivée sur le produit, pas de création de la société (2023). */
     depuisProduit: '2019',
