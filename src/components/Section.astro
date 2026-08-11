@@ -5,13 +5,15 @@
  */
 interface Props {
   id: string;
+  /** Numéro d'ordre, mis en couleur d'accent. */
+  numero: string;
   eyebrow: string;
   titre: string;
   /** Trace un filet au-dessus de la section. */
   filet?: boolean;
 }
 
-const { id, eyebrow, titre, filet = true } = Astro.props;
+const { id, numero, eyebrow, titre, filet = true } = Astro.props;
 ---
 
 <section
@@ -23,8 +25,13 @@ const { id, eyebrow, titre, filet = true } = Astro.props;
 >
   <div class="grid gap-10 md:grid-cols-[minmax(0,14rem)_1fr] md:gap-16">
     <div class="md:sticky md:top-28 md:self-start">
-      <p class="eyebrow">{eyebrow}</p>
+      <p class="eyebrow">
+        <span class="text-accent">{numero}</span> — {eyebrow}
+      </p>
       <h2 class="mt-3 text-heading text-balance">{titre}</h2>
+      {/* Filet court : marque le début de section sans peser comme un trait
+          pleine largeur. */}
+      <span class="mt-4 block h-0.5 w-8 bg-accent" aria-hidden="true"></span>
       {/* Colonne de gauche, sous le titre. Vide par défaut. */}
       <slot name="aside" />
     </div>

@@ -69,6 +69,10 @@
   --text-chapo: clamp(1.25rem, 2.1vw, 1.75rem);
   --text-chapo--line-height: 1.45;
 
+  /* Chiffres-clés du hero. Assez grands pour se lire d'un coup d'œil, assez
+     petits pour ne pas concurrencer le nom. */
+  --text-chiffre: clamp(1.875rem, 3.6vw, 2.75rem);
+
   --text-title: clamp(2rem, 5.5vw, 3.75rem);
   --text-title--line-height: 1.05;
   --text-title--letter-spacing: -0.02em;

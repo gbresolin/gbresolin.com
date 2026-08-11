@@ -21,7 +21,9 @@ export const site = {
      *  que vers app.isi-app.com, qui redirige vers un écran de connexion. */
     site: 'https://isi-app.com',
     /** Année d'arrivée sur le produit, pas de création de la société (2023). */
-    depuisProduit: '2019',
+    depuisProduit: 2019,
+    /** Modules du catalogue. Voir l'étude de cas pour le détail. */
+    modules: 8,
     activite: 'édition de logiciel',
     produit: 'La boîte à outils française pour piloter et simplifier votre SI',
   },

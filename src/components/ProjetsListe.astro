@@ -10,7 +10,7 @@ const projets = await getProjetsPublies();
 const plusieurs = projets.length > 1;
 ---
 
-<Section id="projets" eyebrow="04 — Projets" titre="Ce que j'ai construit">
+<Section id="projets" numero="04" eyebrow="Projets" titre="Ce que j'ai construit">
   <p class="prose-editorial">
     {plusieurs ? 'Quelques projets détaillés' : 'Un projet détaillé'} plutôt
     qu'un mur de vignettes : le contexte, les contraintes, les décisions
@@ -44,7 +44,7 @@ const plusieurs = projets.length > 1;
             <div class="flex items-center gap-4 text-sm text-ink-faint sm:flex-col sm:items-end sm:gap-1">
               <span class="tabular-nums">{projet.data.annee}</span>
               <span
-                class="transition-transform group-hover:translate-x-1"
+                class="text-accent transition-transform group-hover:translate-x-1"
                 aria-hidden="true"
               >
                 →
