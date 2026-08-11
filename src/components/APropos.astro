@@ -4,33 +4,34 @@ import { site } from '../data/site';
 ---
 
 <Section id="a-propos" eyebrow="01 — À propos" titre="Qui je suis" filet={false}>
-  {/* TODO(contenu) : valider le ton et l'exactitude du parcours, notamment le
-      rôle exact tenu dans la création d'ISI-APP. */}
+  {/* TODO(contenu) : il manque la période 2013-2019 — voir la question posée
+      à Grégory. Le reste du parcours est validé. */}
   <div class="prose-editorial">
     <p>
       Je suis développeur fullstack à {site.localisation}. J'ai commencé en
-      2013, je suis passé par l'école IPI Lyon comme concepteur développeur
-      d'applications, et j'ai passé l'essentiel de ces années sur des
-      applications métier — celles qui ont de vrais utilisateurs, de vraies
-      contraintes et des données qu'on n'a pas le droit de perdre.
+      {' '}{site.debutCarriere}, à mon compte, comme webmaster freelance :
+      comparateurs de prix, sites de rencontre. On apprend vite quand on est
+      seul à répondre du résultat.
     </p>
     <p>
-      De 2019 à 2023, j'étais chez <strong>ISI-DSI</strong>, une société de
-      services en AMOA et DSI partagée. En 2023, le groupe s'est structuré
-      autour de deux activités distinctes, et j'ai rejoint
-      {' '}<strong>ISI-APP</strong>, la société d'édition de logiciel — celle
-      qui construit le produit plutôt que celle qui accompagne les clients.
+      Je suis ensuite passé par l'école IPI Lyon comme concepteur développeur
+      d'applications, et j'ai orienté mon travail vers les applications
+      métier — celles qui ont de vrais utilisateurs, de vraies contraintes et
+      des données qu'on n'a pas le droit de perdre.
     </p>
     <p>
-      Passer du service à l'édition change le métier plus qu'on ne le croit :
-      on n'arbitre plus au projet, on arbitre pour tous les clients à la fois,
-      et chaque décision d'architecture se paie ou se rentabilise sur des
-      années.
+      Depuis <strong>2019</strong>, je travaille sur la même solution :
+      {' '}<strong>Isi-APP</strong>. D'abord comme développeur au sein
+      d'ISI-DSI, puis chez <strong>ISI-APP</strong> lorsque le groupe a séparé
+      son activité de services de son activité d'édition, en 2023. J'y suis
+      aujourd'hui associé, tout en restant développeur — je n'ai pas quitté le
+      code pour le tableur.
     </p>
     <p>
-      Ce qui m'intéresse n'a pas changé : comprendre le métier avant d'écrire
-      du code, choisir l'architecture qui tiendra dans trois ans plutôt que
-      celle qui va vite aujourd'hui, et livrer des choses qui marchent.
+      Sept ans sur le même produit, ça apprend une chose qu'aucune mission
+      courte n'enseigne : on vit avec ses décisions d'architecture. Celles
+      qu'on prend pour aller vite, on les repaie ; celles qu'on prend bien,
+      elles portent des années.
     </p>
   </div>
 </Section>

@@ -7,13 +7,14 @@ export const site = {
   prenom: 'Grégory',
   patronyme: 'Bresolin',
   role: 'Développeur fullstack',
-  // TODO(contenu) : intitulé de poste exact chez ISI-APP (et mention éventuelle
-  // du rôle dans la création de la société).
-  poste: 'ISI-APP',
+  poste: 'Associé et développeur chez ISI-APP',
+  /** Premier statut professionnel : webmaster freelance à son compte. */
+  debutCarriere: 2007,
   societe: {
     nom: 'ISI-APP',
     groupe: 'ISI-Groupe',
-    depuis: '2023',
+    /** Année d'arrivée sur le produit, pas de création de la société (2023). */
+    depuisProduit: '2019',
     activite: 'édition de logiciel',
     produit: 'La boîte à outils française pour piloter et simplifier votre SI',
   },

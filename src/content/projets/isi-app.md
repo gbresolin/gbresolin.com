@@ -1,8 +1,8 @@
 ---
 titre: Isi-APP
 resume: SaaS multi-modules pour piloter un système d'information — ticketing, gestion de projet, parc et entités — avec un espace prestataire multi-clients.
-annee: '2023 — aujourd’hui'
-role: Poste salarié chez ISI-APP
+annee: '2019 — aujourd’hui'
+role: Associé et développeur salarié, ISI-APP
 statut: en cours
 stack:
   - Laravel
@@ -21,10 +21,14 @@ brouillon: false
 
 ## Contexte
 
-ISI-APP est la société d'édition du groupe ISI, née en 2023 de la séparation
-entre l'activité de services (ISI-DSI, AMOA et DSI partagée) et l'activité
-produit. Le logiciel porte une promesse simple : **la boîte à outils française
-pour piloter et simplifier votre SI**.
+Je travaille sur Isi-APP depuis **2019**. À l'époque, le produit était
+développé au sein d'ISI-DSI, la société de services du groupe. En 2023, le
+groupe a séparé ses deux métiers — le service d'un côté, l'édition de l'autre —
+et ISI-APP est devenue une société à part entière. Le produit, lui, n'a pas
+changé de mains : c'est le même, poursuivi sans rupture.
+
+Le logiciel porte une promesse simple : **la boîte à outils française pour
+piloter et simplifier votre SI**.
 
 Concrètement, c'est une plateforme SaaS multi-modules qui couvre la gestion
 d'un système d'information de bout en bout : **ticketing**, **gestion de
@@ -84,7 +88,14 @@ fuite entre deux clients et c'est la confiance dans le produit qui tombe.
 
 ## Mon rôle
 
-<!-- TODO(contenu) : intitulé exact, et périmètre réel. Tu as mentionné avoir
-     participé à la création des deux sociétés : si tu as un rôle d'associé ou
-     de fondateur, il a sa place ici — c'est un signal fort, et bien plus
-     parlant qu'un titre de poste. -->
+Je suis **associé d'ISI-APP**, et j'y travaille comme **développeur salarié**.
+Je n'ai pas quitté le code en devenant associé : je porte le produit sur le
+plan technique et je participe aux décisions de la société.
+
+Sept ans sur la même plateforme, c'est une position particulière — on ne livre
+pas puis on s'en va, on vit avec ce qu'on a construit et on le reprend quand
+il a vieilli.
+
+<!-- TODO(contenu) : préciser le périmètre concret si tu veux aller plus loin —
+     conception, encadrement, revue de code, mise en production, relation
+     client. Ce qui relève de toi personnellement. -->

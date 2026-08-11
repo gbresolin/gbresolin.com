@@ -1,7 +1,7 @@
 ---
 import { site } from '../data/site';
 
-const annees = new Date().getFullYear() - 2013;
+const annees = new Date().getFullYear() - site.debutCarriere;
 ---
 
 <section
@@ -30,7 +30,7 @@ const annees = new Date().getFullYear() - 2013;
       </div>
       <div>
         <dt class="eyebrow">Depuis</dt>
-        <dd class="mt-1.5">2013</dd>
+        <dd class="mt-1.5">{site.debutCarriere}</dd>
       </div>
     </dl>
   </div>
