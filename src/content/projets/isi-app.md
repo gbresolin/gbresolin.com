@@ -22,8 +22,14 @@ brouillon: false
 
 ## Contexte
 
-Isi-APP a démarré en **2019**, à deux, sans code existant. Un ami lançait sa
-société, je l'ai suivi en quittant douze ans de freelance.
+Isi-APP a démarré en **2019**, à deux. Un ami lançait sa société, je l'ai
+suivi en quittant douze ans de freelance.
+
+Il n'y avait pas rien : une première ébauche existait sous **Laravel 5**, et
+une partie du cœur fonctionnait déjà. Mais elle était écrite en dur, hors des
+conventions du framework — le genre de code qui tient tant qu'une seule
+personne le connaît. Remettre cet existant d'aplomb a été le premier chantier,
+avant même de pouvoir construire dessus.
 
 Le constat de départ n'a pas changé depuis : il manquait un outil pour piloter
 et simplifier un système d'information. C'est la promesse que porte le
@@ -115,8 +121,8 @@ pas la situation : la surcouche coûterait plus qu'elle ne rapporterait.
 
 ### Livewire plutôt qu'une SPA
 
-Ce n'était pas le point de départ. En 2019, à deux et sans code existant, on
-est partis sur ce qu'on maîtrisait : **jQuery**. Livewire l'a remplacé
+Ce n'était pas le point de départ. En 2019, on a continué avec ce qu'on
+maîtrisait et ce qui était déjà là : **jQuery**. Livewire l'a remplacé
 progressivement, écran par écran, à mesure que le produit grossissait — et la
 migration n'est pas terminée.
 
