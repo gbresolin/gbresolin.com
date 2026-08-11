@@ -55,12 +55,16 @@
 
   /* Échelle typographique fluide.
      Le display descend jusqu'à 2.75rem pour rester lisible à 320px. */
-  /* Dimensionné pour que « Grégory Bresolin » remplisse la largeur du
-     conteneur sur une ligne. Le plafond de 11.5rem évite le débordement une
-     fois --container-page atteint, vers 1360px de viewport. */
-  --text-display: clamp(2.75rem, 13.2vw, 11.5rem);
+  /* « Grégory Bresolin » sur une ligne, sans aller jusqu'à remplir toute la
+     largeur : le blanc de fin de ligne fait partie de la respiration. Le
+     plafond évite le débordement une fois --container-page atteint. */
+  --text-display: clamp(2.75rem, 11.6vw, 10rem);
   --text-display--line-height: 0.92;
   --text-display--letter-spacing: -0.035em;
+
+  /* Chapô du hero : entre le corps de texte et les titres de section. */
+  --text-chapo: clamp(1.25rem, 2.1vw, 1.75rem);
+  --text-chapo--line-height: 1.45;
 
   --text-title: clamp(2rem, 5.5vw, 3.75rem);
   --text-title--line-height: 1.05;
