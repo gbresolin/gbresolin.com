@@ -8,7 +8,7 @@ export const site = {
   patronyme: 'Bresolin',
   // « Lead » plutôt que « fullstack » : fullstack dit l'étendue, lead dit le
   // niveau de responsabilité — encadrement, revue, arbitrage.
-  role: 'Lead developer',
+  role: 'Lead developer Laravel',
   poste: 'Associé et lead developer chez ISI-APP',
   /** Premier statut professionnel : webmaster freelance à son compte. */
   debutCarriere: 2007,
