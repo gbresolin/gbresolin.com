@@ -55,9 +55,12 @@
 
   /* Échelle typographique fluide.
      Le display descend jusqu'à 2.75rem pour rester lisible à 320px. */
-  --text-display: clamp(2.75rem, 11vw, 8.5rem);
+  /* Dimensionné pour que « Grégory Bresolin » remplisse la largeur du
+     conteneur sur une ligne. Le plafond de 11.5rem évite le débordement une
+     fois --container-page atteint, vers 1360px de viewport. */
+  --text-display: clamp(2.75rem, 13.2vw, 11.5rem);
   --text-display--line-height: 0.92;
-  --text-display--letter-spacing: -0.03em;
+  --text-display--letter-spacing: -0.035em;
 
   --text-title: clamp(2rem, 5.5vw, 3.75rem);
   --text-title--line-height: 1.05;
@@ -74,9 +77,10 @@
   --text-label--line-height: 1.4;
   --text-label--letter-spacing: 0.12em;
 
-  /* Rythme vertical des sections. Volontairement généreux, mais pas au point
-     de laisser un trou quand une section est courte. */
-  --spacing-section: clamp(4rem, 9vw, 8rem);
+  /* Rythme vertical des sections. Cette valeur s'applique en haut ET en bas de
+     chaque section : l'écart entre deux sections vaut donc le double. À
+     calibrer sur l'écart voulu divisé par deux, pas sur l'écart voulu. */
+  --spacing-section: clamp(3rem, 5.5vw, 4.5rem);
 
   /* Mesure de lecture — au-delà, l'œil perd la ligne suivante */
   --container-reading: 34rem;
