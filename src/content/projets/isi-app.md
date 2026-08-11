@@ -14,11 +14,12 @@ stack:
 ordre: 1
 vedette: true
 brouillon: false
+# TODO(contenu) : faire valider par ISI-APP ce qui est publiable sur la
+# plateforme — chiffres du Résultat, description de l'architecture, captures
+# éventuelles. Placé en commentaire YAML : il bloque la mise en production
+# sans apparaître dans la page ni dans son code source. À supprimer une fois
+# l'accord obtenu.
 ---
-
-> **Relecture à faire.** Ce texte est rédigé à partir de tes réponses, mais il
-> reste à valider — et surtout à confirmer avec ISI-APP avant publication :
-> captures, chiffres et noms de clients.
 
 ## Contexte
 
