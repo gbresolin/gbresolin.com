@@ -17,6 +17,7 @@ export const site = {
   societe: {
     nom: 'ISI-APP',
     groupe: 'ISI-Groupe',
+    site: 'https://isi-app.com',
     /** Année d'arrivée sur le produit, pas de création de la société (2023). */
     depuisProduit: '2019',
     activite: 'édition de logiciel',

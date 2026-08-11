@@ -1,6 +1,7 @@
 ---
 titre: Isi-APP
-resume: SaaS multi-modules pour piloter un système d'information — ticketing, gestion de projet, parc et entités — avec un espace prestataire multi-clients.
+resume: SaaS multi-modules pour piloter un système d'information — parc informatique, ticketing, projets — avec un espace prestataire multi-clients.
+lien: https://isi-app.com
 annee: '2019 — aujourd’hui'
 role: Lead developer, ISI-APP
 statut: en cours
@@ -22,19 +23,19 @@ brouillon: false
 ## Contexte
 
 Isi-APP a démarré en **2019**, à deux, sans code existant. Un ami lançait sa
-société, je l'ai suivi en quittant douze ans de freelance, avec une ambition
-qui n'a pas bougé depuis : construire une plateforme de pilotage du système
-d'information **incontournable et 100 % française**.
+société, je l'ai suivi en quittant douze ans de freelance.
 
-Le logiciel porte cette promesse : **la boîte à outils française pour piloter
-et simplifier votre SI**. La souveraineté n'y est pas un argument commercial
-ajouté après coup — elle était dans le cahier des charges dès la première
-ligne, et elle contraint les choix techniques.
+Le constat de départ n'a pas changé depuis : il manquait un outil pour piloter
+et simplifier un système d'information. C'est la promesse que porte le
+logiciel — **la boîte à outils française pour piloter et simplifier votre
+SI** — et le mot *française* n'est pas un argument commercial ajouté après
+coup : la souveraineté était dans le cahier des charges dès la première ligne,
+et elle contraint les choix techniques.
 
-Sept ans plus tard, l'équipe a grandi et le produit couvre le **ticketing**,
-la **gestion de projet**, la **gestion de parc** et la **gestion des entités
-et des adresses**. Plutôt que d'empiler quatre outils qui ne se parlent pas,
-tout vit dans la même base et le même référentiel.
+Sept ans plus tard, l'équipe a grandi et le produit couvre la **gestion de
+parc informatique**, le **ticketing**, la **gestion des projets** et celle des
+**entités et des adresses**. Plutôt que d'empiler quatre outils qui ne se
+parlent pas, tout vit dans la même base et le même référentiel.
 
 ## Contraintes
 

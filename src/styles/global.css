@@ -55,10 +55,9 @@
 
   /* Échelle typographique fluide.
      Le display descend jusqu'à 2.75rem pour rester lisible à 320px. */
-  /* « Grégory Bresolin » sur une ligne, sans aller jusqu'à remplir toute la
-     largeur : le blanc de fin de ligne fait partie de la respiration. Le
-     plafond évite le débordement une fois --container-page atteint. */
-  --text-display: clamp(2.75rem, 11.6vw, 10rem);
+  /* « Grégory Bresolin » sur une ligne. La taille ne cherche pas à remplir la
+     largeur : le blanc de fin de ligne fait partie de la respiration. */
+  --text-display: clamp(2.5rem, 8.7vw, 7.5rem);
   --text-display--line-height: 0.92;
   --text-display--letter-spacing: -0.035em;
 
