@@ -21,20 +21,20 @@ brouillon: false
 
 ## Contexte
 
-Je travaille sur Isi-APP depuis **2019**. À l'époque, le produit était
-développé au sein d'ISI-DSI, la société de services du groupe. En 2023, le
-groupe a séparé ses deux métiers — le service d'un côté, l'édition de l'autre —
-et ISI-APP est devenue une société à part entière. Le produit, lui, n'a pas
-changé de mains : c'est le même, poursuivi sans rupture.
+Isi-APP a démarré en **2019**, à deux, sans code existant. Un ami lançait sa
+société, je l'ai suivi en quittant douze ans de freelance, avec une ambition
+qui n'a pas bougé depuis : construire une plateforme de pilotage du système
+d'information **incontournable et 100 % française**.
 
-Le logiciel porte une promesse simple : **la boîte à outils française pour
-piloter et simplifier votre SI**.
+Le logiciel porte cette promesse : **la boîte à outils française pour piloter
+et simplifier votre SI**. La souveraineté n'y est pas un argument commercial
+ajouté après coup — elle était dans le cahier des charges dès la première
+ligne, et elle contraint les choix techniques.
 
-Concrètement, c'est une plateforme SaaS multi-modules qui couvre la gestion
-d'un système d'information de bout en bout : **ticketing**, **gestion de
-projet**, **gestion de parc**, et **gestion des entités et des adresses**.
-Plutôt que d'empiler quatre outils qui ne se parlent pas, tout vit dans la même
-base et le même référentiel.
+Sept ans plus tard, l'équipe a grandi et le produit couvre le **ticketing**,
+la **gestion de projet**, la **gestion de parc** et la **gestion des entités
+et des adresses**. Plutôt que d'empiler quatre outils qui ne se parlent pas,
+tout vit dans la même base et le même référentiel.
 
 ## Contraintes
 
