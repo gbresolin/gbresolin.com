@@ -8,13 +8,10 @@ const annees = new Date().getFullYear() - site.debutCarriere;
   id="contenu"
   class="mx-auto max-w-(--container-page) px-6 pb-4 pt-10 md:px-10 md:pb-6 md:pt-14"
 >
-  {/* Le nom tient sur une ligne à partir de md ; en dessous il repasse sur
-      deux lignes. */}
-  <h1 class="text-display md:whitespace-nowrap">
-    {site.prenom}<br class="md:hidden" /><span class="hidden md:inline"
-      >&nbsp;</span
-    >{site.patronyme}
-  </h1>
+  {/* Une seule ligne quelle que soit la largeur d'écran : la taille est
+      pilotée par --ts-display, calibrée pour que le nom tienne sans déborder
+      dès 320px. */}
+  <h1 class="text-display whitespace-nowrap">{site.prenom} {site.patronyme}</h1>
 
   {/* Chapô sur toute la largeur, dans une taille relevée par rapport au corps
       de texte pour que la ligne reste lisible malgré la largeur.

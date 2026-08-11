@@ -19,6 +19,7 @@
   --c-rule: #e2ded4; /* filets, séparateurs */
   --c-accent: #9c3d17; /* terracotta profond */
   --c-accent-soft: #f0e6df; /* fond d'accent très dilué */
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -55,9 +56,12 @@
 
   /* Échelle typographique fluide.
      Le display descend jusqu'à 2.75rem pour rester lisible à 320px. */
-  /* « Grégory Bresolin » sur une ligne. La taille ne cherche pas à remplir la
-     largeur : le blanc de fin de ligne fait partie de la respiration. */
-  --text-display: clamp(2.5rem, 8.7vw, 7.5rem);
+  /* « Grégory Bresolin » sur une seule ligne à toutes les largeurs. Le
+     plancher de 2.25rem tient dans 320px avec de la marge — mesuré, le texte
+     y occupe environ deux tiers de la place disponible. Une formule unique
+     plutôt qu'un régime mobile distinct : deux courbes différentes
+     produisaient un saut de taille visible au passage en tablette. */
+  --text-display: clamp(2.25rem, 8.7vw, 7.5rem);
   --text-display--line-height: 0.92;
   --text-display--letter-spacing: -0.035em;
 

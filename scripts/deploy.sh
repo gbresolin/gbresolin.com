@@ -105,20 +105,25 @@ fi
 # pas.
 echo "▸ Contrôle des suppressions…"
 
+# `|| true` en fin de pipeline : sous `set -euo pipefail`, un grep qui ne
+# trouve rien renvoie 1 et interromprait le script — c'est-à-dire précisément
+# dans le cas normal où il n'y a aucune suppression suspecte à signaler.
 SUPPRESSIONS=$(
-  rsync -rlz --checksum --delete --dry-run --out-format='%o %n' \
-    --exclude '.well-known/' --exclude 'cgi-bin/' \
-    --exclude '.htpasswd' --exclude '.user.ini' \
-    -e "ssh -p $SSH_PORT -i $CLE" \
-    dist/ "$SSH_UTILISATEUR@$SSH_HOTE:$DESTINATION/" 2>/dev/null \
-  | awk '$1 == "del." {print $2}' \
-  | grep -vE '/.' \
-  | sed 's:/$::' \
-  | while read -r item; do
-      # Ne signale que ce qui n'existe pas dans le build : le reste est du
-      # remplacement normal de fichiers.
-      [ -e "dist/$item" ] || echo "$item"
-    done
+  {
+    rsync -rlz --checksum --delete --dry-run --out-format='%o %n' \
+      --exclude '.well-known/' --exclude 'cgi-bin/' \
+      --exclude '.htpasswd' --exclude '.user.ini' \
+      -e "ssh -p $SSH_PORT -i $CLE" \
+      dist/ "$SSH_UTILISATEUR@$SSH_HOTE:$DESTINATION/" 2>/dev/null \
+    | awk '$1 == "del." {print $2}' \
+    | grep -vE '/.' \
+    | sed 's:/$::' \
+    | while read -r item; do
+        # Ne signale que ce qui n'existe pas dans le build : le reste est du
+        # remplacement normal de fichiers.
+        [ -e "dist/$item" ] || echo "$item"
+      done
+  } || true
 )
 
 if [ -n "$SUPPRESSIONS" ]; then
