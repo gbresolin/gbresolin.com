@@ -24,13 +24,20 @@ const enDev = import.meta.env.DEV;
 {
   portrait ? (
     <figure class="mt-8 max-w-56">
+      {/* Le recadrage 4/5 est fait ici, au build, et non en CSS : avec un
+          object-cover, une source carrée devait être agrandie pour remplir la
+          hauteur du cadre, ce qui la rendait floue. `densities` fournit la
+          variante 2× pour les écrans à haute densité. */}
       <Image
         src={portrait}
         alt={`Portrait de ${site.nom}`}
-        widths={[224, 448]}
-        sizes="(min-width: 768px) 14rem, 100vw"
-        class="w-full rounded-sm object-cover"
-        style="aspect-ratio: 4 / 5"
+        width={224}
+        height={280}
+        densities={[1, 2]}
+        fit="cover"
+        position="center"
+        quality={85}
+        class="w-full rounded-sm"
         loading="lazy"
       />
     </figure>
