@@ -2,8 +2,6 @@
 import Section from './Section.astro';
 import { site } from '../data/site';
 
-/* TODO(contenu) : à valider et réécrire avec Grégory — c'est la section qui
-   porte le différenciateur, elle doit sonner juste. */
 const etapes = [
   {
     titre: 'Comprendre avant de coder',
@@ -13,25 +11,25 @@ const etapes = [
   {
     titre: "Décider de l'architecture",
     texte:
-      "Modèle de données, découpage, choix techniques et leurs conséquences. Je tranche, et j'assume les arbitrages : ce sont eux qu'on retrouve dans le code trois ans plus tard.",
+      "Modèle de données, découpage, choix techniques et leurs conséquences. Je tranche, et j'assume les arbitrages : ce sont eux qu'on retrouve dans le code trois ans plus tard. Sur une application multi-clients, choisir un cloisonnement explicite plutôt qu'un filtrage implicite se paie en rigueur au quotidien, mais évite la fausse sécurité — c'est le genre de décision qui ne se rattrape pas après coup.",
   },
   {
-    titre: 'Implémenter avec Claude Code',
+    titre: 'Implémenter dans un cadre écrit',
     texte:
-      "L'écriture du code, les tests, les migrations, la mise en production. Je pilote, je relis tout, je corrige. Le gain n'est pas de taper moins vite, c'est de passer plus de temps sur les décisions et moins sur la plomberie.",
+      "L'IA écrit le code, mais à l'intérieur d'un cadre que j'ai posé avant elle : conventions du projet, règles d'accès aux données, structure des composants, et des commandes internes pour les tâches récurrentes. C'est ce cadre qui fait la différence entre du code qui ressemble au projet et du code qui s'y intègre vraiment. Le gain n'est pas de taper plus vite : c'est de passer plus de temps sur les décisions et moins sur la plomberie.",
   },
   {
-    titre: 'Relire, tester, déployer',
+    titre: 'Valider, documenter, déployer',
     texte:
-      "Rien ne part en production sans être relu et testé. Le déploiement est automatisé : un push, un build, une mise en ligne — reproductible et sans manipulation manuelle.",
+      "Une fonctionnalité n'est pas finie quand elle marche, mais quand elle est relue, testée et documentée. Tests unitaires, tests fonctionnels et parcours utilisateur de bout en bout, plus une recette avant livraison. Le déploiement est automatisé : la fusion de la branche de version déclenche la mise en ligne, sans manipulation manuelle sur le serveur.",
   },
 ];
 ---
 
 <Section id="methode" eyebrow="02 — Méthode" titre="Comment je travaille">
   <p class="prose-editorial">
-    L'IA a changé ma façon de coder, pas mon métier. Elle a supprimé la partie
-    mécanique du travail et rendu la partie conception plus déterminante que
+    L'IA a changé ma façon de coder, pas mon métier. Elle absorbe la partie
+    mécanique du travail et rend la partie conception plus déterminante que
     jamais. Concrètement, voilà comment un projet se déroule.
   </p>
 
