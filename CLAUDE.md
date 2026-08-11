@@ -63,6 +63,20 @@ cPanel à chaque déploiement. Pour un site mis à jour de temps en temps, la
 complexité n'en valait pas la peine. Si le besoin change, la bascule est
 documentée côté o2switch.
 
+## Héberger d'autres sites sur le même compte
+
+Le déploiement synchronise `public_html` avec `--delete` : tout dossier tiers
+qui s'y trouverait serait effacé. Or cPanel propose par défaut une racine
+**sous** `public_html` à la création d'un domaine additionnel.
+
+Placer les autres sites en dehors, par exemple `~/sites/<domaine>/`, en
+modifiant le *Document Root* proposé. Chaque site garde son dépôt, son
+`.env.deploy` et son propre `CHEMIN_PRODUCTION`.
+
+Le script simule la suppression avant de l'appliquer et demande confirmation
+s'il trouve à la racine de la destination un élément absent du build — le
+garde-fou vaut pour l'oubli, pas comme méthode de travail.
+
 ## Pièges connus
 
 - `public/.htaccess` porte les redirections 301 des anciennes URLs WordPress.

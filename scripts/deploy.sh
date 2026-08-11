@@ -98,11 +98,47 @@ fi
 
 # --- Envoi ------------------------------------------------------------------
 
+# --delete garde la cible propre, mais il effacerait aussi tout dossier tiers
+# présent dans la destination — typiquement un autre site dont cPanel aurait
+# placé la racine sous public_html. On simule d'abord la suppression et on
+# s'arrête si elle touche un élément de premier niveau que le build ne produit
+# pas.
+echo "▸ Contrôle des suppressions…"
+
+SUPPRESSIONS=$(
+  rsync -rlz --checksum --delete --dry-run --out-format='%o %n' \
+    --exclude '.well-known/' --exclude 'cgi-bin/' \
+    --exclude '.htpasswd' --exclude '.user.ini' \
+    -e "ssh -p $SSH_PORT -i $CLE" \
+    dist/ "$SSH_UTILISATEUR@$SSH_HOTE:$DESTINATION/" 2>/dev/null \
+  | awk '$1 == "del." {print $2}' \
+  | grep -vE '/.' \
+  | sed 's:/$::' \
+  | while read -r item; do
+      # Ne signale que ce qui n'existe pas dans le build : le reste est du
+      # remplacement normal de fichiers.
+      [ -e "dist/$item" ] || echo "$item"
+    done
+)
+
+if [ -n "$SUPPRESSIONS" ]; then
+  echo
+  echo "⚠ Ces éléments présents sur le serveur ne sont pas dans le build et"
+  echo "  seraient SUPPRIMÉS :"
+  echo "$SUPPRESSIONS" | sed 's/^/    /'
+  echo
+  echo "  S'il s'agit d'un autre site, interrompez et déplacez-le hors de"
+  echo "  $DESTINATION avant de continuer."
+  if [ -z "$DRY" ]; then
+    read -r -p "  Confirmer la suppression ? [oui/N] " confirmation
+    [ "$confirmation" = "oui" ] || { echo "Annulé."; exit 0; }
+  fi
+fi
+
 echo "▸ Envoi vers o2switch…"
 
-# --delete garde la cible propre, mais effacerait ce qu'Apache et cPanel y
-# déposent. Les exclusions protègent notamment le renouvellement du
-# certificat Let's Encrypt.
+# Les exclusions protègent ce qu'Apache et cPanel déposent eux-mêmes,
+# notamment le renouvellement du certificat Let's Encrypt.
 rsync -rlvz --checksum --delete $DRY \
   --exclude '.well-known/' \
   --exclude 'cgi-bin/' \
