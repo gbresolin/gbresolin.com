@@ -23,11 +23,15 @@ export const site = {
     activite: 'édition de logiciel',
     produit: 'La boîte à outils française pour piloter et simplifier votre SI',
   },
-  localisation: 'Lyon',
+  /** Formulation utilisée dans les textes. */
+  localisation: 'région lyonnaise',
+  /** Ville de rattachement, pour les données structurées : schema.org attend
+   *  une commune normalisée dans addressLocality, pas une aire urbaine. */
+  ville: 'Lyon',
   url: 'https://www.gbresolin.com',
   email: 'contact@gbresolin.com',
   description:
-    'Lead developer à Lyon. Applications métier Laravel, de la première ligne jusqu’à la mise en production.',
+    'Lead developer en région lyonnaise. Applications métier Laravel, de la première ligne jusqu’à la mise en production.',
   liens: {
     // Compte personnel. Le compte Grego01600 est le compte professionnel et
     // n'a pas vocation à apparaître ici.
