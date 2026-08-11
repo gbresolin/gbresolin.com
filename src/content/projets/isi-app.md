@@ -68,8 +68,8 @@ fuite entre deux clients et c'est la confiance dans le produit qui tombe.
 
 ### Le cloisonnement ne pouvait pas être implicite
 
-Base mutualisée, et filtrage explicite concentré dans la couche Service. Deux
-approches plus séduisantes sur le papier ont été écartées.
+Base mutualisée, et filtrage tenant écrit explicitement, requête par requête.
+Deux approches plus séduisantes sur le papier ont été écartées.
 
 **Une base par client.** Écartée pour son coût opérationnel : près de quatre
 cents modèles à migrer autant de fois qu'il y a de clients, et surtout des
@@ -86,16 +86,17 @@ aurait dû être désactivé sur une grande partie des requêtes — c'est-à-di
 pire configuration possible : une garantie affichée mais pas tenue, avec la
 fausse sécurité qui va avec.
 
-Le choix a donc été de rendre le filtrage **visible sur chaque requête** et de
-le concentrer en un seul endroit, plutôt que de le rendre invisible et
-contournable partout.
+Le choix a donc été de rendre le filtrage **visible sur chaque requête**,
+plutôt que de le rendre invisible et contournable partout.
 
-Ce que ça coûte, sans enrobage : la garantie devient conventionnelle plutôt que
-structurelle. Elle repose sur la centralisation, la revue et les tests — pas
-sur le langage. Un socle qui appliquerait le cloisonnement par défaut, avec une
-sortie explicite et traçable pour les accès transverses légitimes, offrirait la
-même souplesse avec un défaut sûr. C'est la direction dans laquelle le produit
-évolue.
+Ce que ça coûte, sans enrobage : la garantie devient conventionnelle plutôt
+que structurelle. Elle repose sur la convention, la revue et les tests — pas
+sur le langage. Et une convention n'est jamais appliquée uniformément : la
+concentration du filtrage dans une couche dédiée est la cible vers laquelle
+tend le code récent, pas une description de l'ensemble. Un socle qui
+appliquerait le cloisonnement par défaut, avec une sortie explicite et
+traçable pour les accès transverses légitimes, offrirait la même souplesse
+avec un défaut sûr. C'est la direction dans laquelle le produit évolue.
 
 ### Le découplage est porté par la donnée, pas par le code
 
@@ -130,11 +131,12 @@ Aujourd'hui : près de huit cents composants Livewire, plus de deux mille vues,
 et aucun framework front.
 
 **Ce que ça a fait gagner.** Le gain principal découle directement du point
-précédent : sans API dédiée à l'interface, le modèle de droits et le filtrage
-ne s'appliquent qu'à un seul endroit, côté serveur. Une SPA aurait imposé de
-réexposer tout ce modèle en API et de le resécuriser endpoint par endpoint —
-exactement la surface où une fuite entre clients serait apparue. Sur un produit
-dont la difficulté centrale *est* le cloisonnement, ce n'est pas un détail.
+précédent : l'interface étant rendue côté serveur, le modèle de droits et le
+filtrage s'appliquent là où ils sont écrits, sans avoir à être réexposés route
+par route. Une SPA aurait imposé de porter tout ce modèle dans une API et de
+le resécuriser sur chaque endpoint — exactement la surface où une fuite entre
+clients serait apparue. Sur un produit dont la difficulté centrale *est* le
+cloisonnement, ce n'est pas un détail.
 
 S'y ajoutent une seule compétence à staffer au lieu de deux, pas de contrat
 d'API à maintenir en double, et une vraie vitesse sur les écrans de gestion :
@@ -148,9 +150,9 @@ et volume d'échanges. L'état vit côté serveur, ce qui demande une discipline
 quotidienne plutôt qu'un réglage. Le JavaScript revient malgré tout dès qu'il
 faut de l'interactivité fine, mais dispersé dans les vues au lieu d'être
 structuré. Les tests d'interface passent par des tests de bout en bout, plus
-lents et plus fragiles que des tests de composants. Et aucune API réutilisable
-n'existe en sous-produit : le jour où une application mobile deviendra
-nécessaire, elle sera à construire.
+lents et plus fragiles que des tests de composants. Et il n'existe pas d'API
+générale réutilisable : le jour où une application mobile deviendra
+nécessaire, l'essentiel restera à construire.
 
 Le vrai coût, cela dit, n'est pas Livewire : c'est le **double paradigme**. Le
 Livewire d'aujourd'hui cohabite encore avec le jQuery des débuts, et c'est
@@ -169,14 +171,19 @@ identifiable, ce qui est la seule chose qu'on demande à un arbitrage.
 Trois choix qu'on assume, et ce qu'ils coûtent :
 
 - **La sécurité du cloisonnement est conventionnelle**, portée par la
-  centralisation et la revue plutôt que par le langage. En échange, chaque
-  requête dit ce qu'elle filtre, au lieu de dépendre d'un mécanisme invisible
-  qu'on aurait passé son temps à désactiver.
+  convention et la revue plutôt que par le langage. En échange, chaque requête
+  dit ce qu'elle filtre, au lieu de dépendre d'un mécanisme invisible qu'on
+  aurait passé son temps à désactiver. La contrepartie est réelle : une règle
+  qui n'est pas outillée n'est appliquée uniformément que là où le code a été
+  repris.
 - **Aucune frontière technique entre domaines.** Le couplage se contrôle en
   revue. On y gagne un déploiement unique et zéro surcouche de versionnage.
-- **Pas d'API pour l'interface.** On y gagne un modèle de droits appliqué en
-  un seul endroit ; on y perd une API qu'il faudra construire le jour où un
-  autre client en aura besoin.
+- **Pas de SPA, donc pas d'API générale** exposant le modèle métier à
+  l'interface. On y gagne un modèle de droits appliqué côté serveur sans être
+  réexposé route par route ; on y perd une API réutilisable, qui reste
+  largement à construire. La règle souffre une exception héritée : les écrans
+  les plus anciens s'alimentent encore par des endpoints JSON dédiés — une des
+  raisons pour lesquelles ils sont progressivement remplacés.
 
 ## Résultat
 
