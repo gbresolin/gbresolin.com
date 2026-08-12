@@ -125,9 +125,17 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Compense la hauteur du header collant sur les ancres */
-    scroll-padding-top: 5rem;
+    /* Compense la hauteur de l'en-tête collant sur les ancres. Elle vaut le
+       double sur mobile, où la navigation passe sur une seconde ligne : un
+       décalage unique masquerait le début de chaque section. */
+    scroll-padding-top: 7.5rem;
     -webkit-text-size-adjust: 100%;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-top: 5rem;
+    }
   }
 
   body {

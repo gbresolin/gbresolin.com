@@ -13,24 +13,39 @@ const prefixe = racine ? '' : '/';
 {/* Même teinte que le hero : l'en-tête en prolonge le bloc plutôt que de poser
     une bande claire au-dessus. Il la conserve au défilement, où elle tranche
     alors sur la surface crème. */}
-<header
-  class="sticky top-0 z-40 bg-hero/95 text-hero-texte backdrop-blur-sm"
->
+<header class="sticky top-0 z-40 bg-hero/95 text-hero-texte backdrop-blur-sm">
+  {/* Un seul jeu de liens, deux dispositions. Sous 640px, la nav prend toute
+      la largeur et passe donc à la ligne, sous le nom et le bouton ; au-delà,
+      elle se replace entre les deux. L'ordre visuel change, pas le DOM. */}
   <div
-    class="mx-auto flex max-w-(--container-page) items-center justify-between gap-6 px-6 py-4 md:px-10"
+    class="mx-auto flex max-w-(--container-page) flex-wrap items-center gap-x-6 px-6 py-3 md:px-10 md:py-4"
   >
     <a
       href="/"
-      class="font-display text-lg leading-none tracking-tight transition-colors hover:text-hero-accent"
+      class="mr-auto font-display text-lg leading-none tracking-tight transition-colors hover:text-hero-accent"
     >
       {site.nom}
     </a>
 
-    <nav aria-label="Navigation principale">
-      <ul class="flex items-center gap-5 text-sm md:gap-7">
+    <a
+      href={`mailto:${site.email}`}
+      class="order-2 rounded-full border border-hero-doux/60 px-4 py-1.5 text-sm transition-colors hover:border-hero-accent hover:text-hero-accent sm:order-3"
+    >
+      Me contacter
+    </a>
+
+    <nav
+      aria-label="Navigation principale"
+      class="order-3 -mx-6 mt-3 w-full overflow-x-auto border-t border-hero-filet px-6 sm:order-2 sm:m-0 sm:w-auto sm:border-0 sm:p-0"
+    >
+      {/* Défilement horizontal en secours : à 320px, les quatre intitulés
+          tiennent tout juste, et une police système plus large déborderait. */}
+      <ul
+        class="flex w-max items-center gap-5 py-2.5 text-sm sm:w-auto sm:py-0 md:gap-7"
+      >
         {
           sections.map((s) => (
-            <li class="hidden sm:block">
+            <li>
               <a
                 href={`${prefixe}#${s.id}`}
                 class="text-hero-doux transition-colors hover:text-hero-texte"
@@ -40,15 +55,19 @@ const prefixe = racine ? '' : '/';
             </li>
           ))
         }
-        <li>
-          <a
-            href={`mailto:${site.email}`}
-            class="rounded-full border border-hero-doux/60 px-4 py-1.5 text-sm transition-colors hover:border-hero-accent hover:text-hero-accent"
-          >
-            Me contacter
-          </a>
-        </li>
       </ul>
     </nav>
   </div>
 </header>
+
+<style>
+  /* La barre de défilement de la nav mobile n'apporte rien visuellement :
+     les liens débordent rarement, et le geste reste possible. */
+  nav {
+    scrollbar-width: none;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+</style>
