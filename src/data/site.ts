@@ -20,8 +20,10 @@ export const site = {
     /** Site public de la société. Les liens du portfolio pointent ici plutôt
      *  que vers app.isi-app.com, qui redirige vers un écran de connexion. */
     site: 'https://isi-app.com',
-    /** Année d'arrivée sur le produit, pas de création de la société (2023). */
+    /** Année d'arrivée sur le produit Isi-APP, alors développé chez ISI-DSI. */
     depuisProduit: 2019,
+    /** Année de passage chez ISI-APP, à la scission du groupe. */
+    depuisSociete: 2023,
     /** Modules du catalogue. Voir l'étude de cas pour le détail. */
     modules: 8,
     activite: 'édition de logiciel',

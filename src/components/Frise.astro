@@ -11,16 +11,22 @@ const maintenant = new Date().getFullYear();
 
 const etapes = [
   {
-    periode: `${site.debutCarriere} — 2019`,
+    periode: `${site.debutCarriere} — ${site.societe.depuisProduit}`,
     duree: site.societe.depuisProduit - site.debutCarriere,
     titre: 'Freelance',
     detail: 'Comparateurs de prix, plateformes grand public',
   },
   {
-    periode: `2019 — aujourd’hui`,
-    duree: maintenant - site.societe.depuisProduit,
-    titre: 'Isi-APP',
-    detail: 'Développeur, puis lead developer',
+    periode: `${site.societe.depuisProduit} — ${site.societe.depuisSociete}`,
+    duree: site.societe.depuisSociete - site.societe.depuisProduit,
+    titre: 'ISI-DSI',
+    detail: 'Développeur fullstack sur Isi-APP',
+  },
+  {
+    periode: `${site.societe.depuisSociete} — aujourd’hui`,
+    duree: maintenant - site.societe.depuisSociete,
+    titre: 'ISI-APP',
+    detail: 'Lead developer',
   },
 ];
 ---
